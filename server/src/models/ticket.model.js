@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
-import { patterns } from '../utils.js'
+import mongoosePaginate from 'mongoose-paginate-v2'
+
 const collectionName = 'ticket'
 
 const ticketSchema = mongoose.Schema(
@@ -35,6 +36,7 @@ const ticketSchema = mongoose.Schema(
     }
   }
 )
+ticketSchema.plugin(mongoosePaginate)
 ticketSchema.pre('findOne', function () {
   this.populate('products.product')
 })

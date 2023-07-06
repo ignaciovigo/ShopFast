@@ -20,7 +20,7 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
     <article className='flex rounded-full bg-neutral-800 p-1'>
       <label htmlFor='searchText' className="flex justify-center items-center ps-2">
         {
-          isLoading ?  <Spinner />:
+          isLoading ?  <Spinner classColor='text-second' />:
         <AiOutlineSearch className='text-second w-8 h-8' />
         }
       </label>

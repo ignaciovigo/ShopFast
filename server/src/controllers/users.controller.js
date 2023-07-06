@@ -32,15 +32,17 @@ export async function getUserData (req, res) {
 }
 
 export async function getTickets (req, res) {
+  const { page } = req.query
+  if (page && isNaN(Number(page))) return res.sendUserError('The page received has to be a number')
   try {
-    const result = await ticketService.getTickets({ email: req.user.email })
-    if (!result) throw result
-    const tickets = result.map((ticket) => {
+    const {docs, totalPages, hasNextPage} = await ticketService.getTickets({ email: req.user.email, page })
+    if (docs.length === 0) throw result
+    const tickets = docs.map((ticket) => {
       const products = ticket.products?.map(e => (`${e.product?.title} x ${e.quantity}`)).join(', ')
       return { time: formatDate(ticket.time), amount: ticket.amount, products }
     })
     req.logger.info(`Tickets ${tickets}`)
-    return res.sendSuccess(tickets)
+    return res.sendSuccess({ tickets, totalPages, hasNextPage })
   } catch (error) {
     req.logger.error(`Could not get the data from de tickets reason: ${error.message}`)
     return res.sendServerError(`Could not get the data from de tickets ${error}`)

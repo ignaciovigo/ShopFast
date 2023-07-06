@@ -70,16 +70,17 @@ const transport = nodemailer.createTransport({
 })
 
 const formatDate = (dateTimeString) => {
-  const dateTime = new Date(dateTimeString)
+  const dateTime = new Date(dateTimeString);
 
-  const year = dateTime.getFullYear()
-  const month = ('0' + (dateTime.getMonth() + 1)).slice(-2)
-  const day = ('0' + dateTime.getDate()).slice(-2)
-  const hours = ('0' + dateTime.getHours()).slice(-2)
-  const minutes = ('0' + dateTime.getMinutes()).slice(-2)
-  const seconds = ('0' + dateTime.getSeconds()).slice(-2)
+  const year = dateTime.getFullYear();
+  const month = new Intl.DateTimeFormat('en', { month: 'long' }).format(dateTime);
+  const day = ('0' + dateTime.getDate()).slice(-2);
+  const hours = ('0' + dateTime.getHours()).slice(-2);
+  const minutes = ('0' + dateTime.getMinutes()).slice(-2);
+  const seconds = ('0' + dateTime.getSeconds()).slice(-2);
 
-  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`
+
+  return `${day} ${month} ${year} ${hours}:${minutes}:${seconds}`
 }
 
 function generateProducts ({ numOfProducts = 50 }) {

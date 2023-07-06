@@ -8,10 +8,10 @@ export default function CartContainer({ showButtonPay }) {
 
   return (
     <div className='p-4'>
-      <div className='flex justify-between items-end gap-1'>
+      <div className='flex justify-between items-end mb-1'>
         <h2 className='text-2xl font-bold'>Your Cart</h2>
         <span
-          className='p-2 bg-second flex justify-center items-center text-black rounded-md cursor-pointer'
+          className={`${cart.length === 0 ? 'hidden' :''} p-2 bg-second flex justify-center items-center text-black rounded-md cursor-pointer`}
           onClick={() => clearCart()}
         >
           <HiTrash className='pointer-events-none h-6 w-6' />
@@ -24,7 +24,7 @@ export default function CartContainer({ showButtonPay }) {
               {cart.map((e) => {
                 return (
                   <li
-                    className='flex items-center py-4 px-6 bg-[#111111]'
+                    className='flex items-center py-4 px-3 bg-[#111111]'
                     key={e.product.id + "3"}
                   >
                     <img
@@ -36,7 +36,7 @@ export default function CartContainer({ showButtonPay }) {
                       <h3 className='text-lg font-bold text-second'>
                         {e.product.title}
                       </h3>
-                      <p className='text-gray-200 text-md'>
+                      <p className='text-gray-200 text-sm'>
                         {e.product.description}
                       </p>
                       <p className='text-gray-500 text-sm flex gap-1'>

@@ -30,10 +30,10 @@ export default class TicketManagerMongo {
     }
   }
 
-  async getTickets ({ email }) {
+  async getTickets ({ email, page = 1}) {
     try {
-      const ticket = await ticketModel.find({ email }, { products: 1, time: 1, amount: 1 }).populate('products.product').sort({ time: -1 }).lean()
-      return ticket
+      const result = await ticketModel.paginate({ email }, { limit: 5, page, lean: true, populate: 'products.product', sort: { time: -1 } })
+      return result
     } catch (error) {
       throw Error(error.message)
     }

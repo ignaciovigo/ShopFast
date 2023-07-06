@@ -4,14 +4,17 @@ import useCart from "../hooks/useCart";
 import { toast } from "react-hot-toast";
 import CONSTANTS from "../constants/constants";
 import { useAuth } from "../hooks/useAuth";
+import Spinner from "./Spinner";
 
 export default function Purchase() {
   const { totalPrice, cart, updateCart, clearCart } = useCart();
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [productsPurchased, setProductsPurchased] = useState([]);
   const { currentUser } = useAuth();
 
   const handleClick = async () => {
+    setIsLoading(true);
     const products = cart.map((e) => ({
       product: e.product.id,
       quantity: e.quantity,
@@ -68,23 +71,34 @@ export default function Purchase() {
     } catch (error) {
       toast(error.message);
       setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
     <div className='max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8'>
-      <div className='bg-white shadow-lg rounded-lg overflow-hidden'>
-        <h2 className='text-2xl font-bold mb-4'>Purchase</h2>
-        <div className='p-4 flex justify-around'>
-          <div className='bg-white rounded-lg shadow-md p-6'>
-            <section className='w-full flex flex-col justify-center items-center'>
-              <h1 className='text-2xl font-bold text-black'>
-                Total Price ${totalPrice()}
-              </h1>
+      <div className='bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2'>
+        <h2 className='text-2xl font-bold mb-4 md:col-span-3 p-2'>Purchase</h2>
+        <CartContainer />
+        <div className='bg-white rounded-lg shadow-md p-6'>
+          <section className='w-full flex flex-col justify-center items-center'>
+            <h1 className='text-2xl font-bold text-black'>
+              Total Price ${totalPrice()}
+            </h1>
+            <div>
               <button
+                disabled={isLoading}
                 onClick={handleClick}
-                className='bg-second hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded'
+                className='bg-second hover:bg-yellow-500 text-black font-bold flex py-2 px-4 rounded'
               >
-                Confirm purchase
+                {isLoading ? (
+                  <>
+                    <Spinner />
+                    Processing...
+                  </>
+                ) : (
+                  "Confirm purchase"
+                )}
               </button>
               {productsPurchased.length > 0 && (
                 <div className='bg-green-200 p-4 rounded'>
@@ -104,9 +118,8 @@ export default function Purchase() {
                   </ul>
                 </div>
               )}
-            </section>
-          </div>
-          <CartContainer />
+            </div>
+          </section>
         </div>
       </div>
     </div>

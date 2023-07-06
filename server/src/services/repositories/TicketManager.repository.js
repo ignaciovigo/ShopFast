@@ -14,8 +14,8 @@ export default class TicketManagerRepository {
     return ticket
   }
 
-  async getTickets ({ email }) {
-    const ticket = await this.dao.getTickets({ email })
+  async getTickets ({ email, page }) {
+    const ticket = await this.dao.getTickets({ email, page })
     return ticket
   }
 }

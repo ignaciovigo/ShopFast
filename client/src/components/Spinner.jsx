@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function Spinner() {
+export default function Spinner({ classColor }) {
   return (
     <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    className="animate-spin -ml-1 mr-3 h-6 w-6 text-second"
+    className={`animate-spin -ml-1 h-6 w-6 ${classColor}`}
     viewBox="0 0 24 24"
   >
     <circle
