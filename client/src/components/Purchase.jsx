@@ -12,7 +12,7 @@ export default function Purchase() {
   const [isLoading, setIsLoading] = useState(false);
   const [productsPurchased, setProductsPurchased] = useState([]);
   const { currentUser } = useAuth();
-
+  
   const handleClick = async () => {
     setIsLoading(true);
     const products = cart.map((e) => ({

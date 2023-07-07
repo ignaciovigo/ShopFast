@@ -3,17 +3,17 @@ import CustomRouter from './CustomRouter.js'
 
 export default class CartsRouter extends CustomRouter {
   init () {
-    this.post('/', { policies: ['PUBLIC'] }, createCart)
+    this.post('/', { policies: ['USER'], strategy: 'jwt' }, createCart)
 
-    this.get('/:cid', { policies: ['PUBLIC'] }, getCartById)
+    this.get('/:cid', { policies: ['USER'], strategy: 'jwt' }, getCartById)
 
-    this.put('/:cid', { policies: ['PUBLIC'] }, addProductstoCart)
+    this.put('/:cid', { policies: ['USER'], strategy: 'jwt' }, addProductstoCart)
 
-    this.delete('/:cid', { policies: ['PUBLIC'] }, deleteAllproductsInCart)
+    this.delete('/:cid', { policies: ['USER'], strategy: 'jwt' }, deleteAllproductsInCart)
 
-    this.put('/:cid/product/:pid', { policies: ['PUBLIC'] }, updateProductInCart)
+    this.put('/:cid/product/:pid', { policies: ['USER'], strategy: 'jwt' }, updateProductInCart)
 
-    this.delete('/:cid/product/:pid', { policies: ['PUBLIC'] }, deleteProductById)
+    this.delete('/:cid/product/:pid', { policies: ['PUBLIC'], strategy: 'jwt' }, deleteProductById)
     this.post('/:cid/purchase', { policies: ['USER'], strategy: 'jwt' }, purchase)
   }
 }

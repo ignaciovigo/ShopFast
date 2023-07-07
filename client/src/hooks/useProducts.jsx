@@ -26,7 +26,7 @@ export default function useProducts({search}) {
         return 
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
       toast.error(error.message);
     } finally{
       setIsLoading(false)

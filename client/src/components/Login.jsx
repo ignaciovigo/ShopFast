@@ -61,7 +61,7 @@ export default function Login() {
           or with email
         </span>
       </div>
-      <div className='grid grid-cols-1 gap-5 sm:my-5'>
+      <div className='grid grid-cols-1 gap-5 sm:my-3'>
         {/* segunda row */}
         <input
           value={data.email}
@@ -86,7 +86,7 @@ export default function Login() {
         />
       </div>
       <p
-        className={`text-red-600 text-xs text-light my-2 ${
+        className={`text-red-600 text-xs text-light mb-1 ${
           error ? "visible" : "invisible"
         }`}
       >

@@ -77,13 +77,13 @@ export default function ItemProduct({ product, role, refreshProducts }) {
           />
         ))}
       </div>
-      <p className='text-gray-600 mb-4 break-words overflow-y-scroll max-h-24'>{description}</p>
-      <p className='text-gray-500 text-sm'>Stock: {stock}</p>
+      <p className='text-gray-600 break-words text-sm overflow-y-scroll max-h-24'>{description}</p>
+      <p className='text-gray-500 text-sm mt-auto'>Stock: {stock}</p>
       <p className='text-gray-500 text-sm'>Price: ${price}</p>
       <p className='text-gray-500 text-sm'>Category: {category}</p>
       {role === "USER" && (
         <>
-          <div className='flex items-center justify-center mt-auto'>
+          <div className='flex items-center justify-center'>
             <button
               onClick={decreaseQuantity}
               className='px-3 py-1 text-sm text-gray-500 hover:text-gray-700 bg-gray-200 hover:bg-gray-300 rounded-l'

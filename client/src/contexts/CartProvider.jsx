@@ -51,7 +51,6 @@ const reducer = (state, action) => {
 }
 export function CartProvider ({ children }) {
   const [state, dispatch] = useReducer(reducer, intialState)
-    console.log('cart',state)
   const addToCart = (product) => dispatch({
     type: 'ADD_TO_CART',
     payload: product

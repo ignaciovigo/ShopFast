@@ -27,7 +27,6 @@ export default function FormAddProduct() {
       [e.target.name]: value,
     }));
   };
-  console.log(formData);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

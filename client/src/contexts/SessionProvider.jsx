@@ -10,7 +10,6 @@ export default function SessionProvider({ children }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
-  console.log("state", currentUser, isAuthenticated);
 
   const getUserData = async () => {
     try {
@@ -29,7 +28,7 @@ export default function SessionProvider({ children }) {
       }
     } catch (error) {
       setIsAuthenticated(false);
-      console.log(error);
+      console.error(error);
     } finally {
       setIsLoading(false)
     }
@@ -51,8 +50,9 @@ export default function SessionProvider({ children }) {
       navigate("/products");
       toast.success(result.message);
     } catch (error) {
-      console.log(error);
       toast.error(error.message);
+      console.error(error.message);
+      throw error
     }
   };
 
@@ -69,7 +69,8 @@ export default function SessionProvider({ children }) {
       setIsAuthenticated(false);
       navigate("/login");
     } catch (error) {
-      console.log(error);
+      setIsAuthenticated(false);
+      console.error(error.message);
     }
   };
   useEffect(() => {

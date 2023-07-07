@@ -71,7 +71,7 @@ export default function CartContainer({ showButtonPay }) {
                   data-btn='close'
                   className='px-4 py-2 text-sm font-medium text-black bg-second hover:bg-yellow-500 rounded'
                 >
-                  Pagar
+                  Pay now
                 </Link>
               </>
             )}

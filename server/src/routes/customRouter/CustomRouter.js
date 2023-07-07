@@ -35,7 +35,7 @@ export default class CustomRouter {
       try {
         await callback.apply(this, params)
       } catch (error) {
-        customLogger.error(`${error.message}`)
+        params[0].logger.error(`${error.message}`)
         params[1].sendServerError(error.message)
       }
     })
@@ -59,7 +59,7 @@ export default class CustomRouter {
       }
       // when the endpoint requires auth
       passport.authenticate(strategy, options ?? { session: false }, function (err, user, info) {
-        customLogger.info(`User authenticated ${user}`)
+        req.logger.debug(`User authenticated ${user}`)
         if (err) return next(err)
         if (!user) {
           const message = info && typeof info === 'object' ? info.toString() : 'Unauthorized'

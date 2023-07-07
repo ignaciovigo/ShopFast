@@ -28,7 +28,6 @@ export default function Register () {
         if (prevData.current === JSON.stringify(data)) return
         prevData.current = JSON.stringify(data)
         setLoading(true)
-        console.log('Calling to api to register')
         const resp = await fetch(CONSTANTS.REGISTER_URL, {
           method: 'POST',
           headers: {

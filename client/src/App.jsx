@@ -14,6 +14,7 @@ import { CartProvider } from "./contexts/CartProvider";
 import Purchase from "./components/Purchase";
 import AdminPanelContainer from "./components/AdminPanelContainer";
 import { useAuth } from "./hooks/useAuth";
+import NotFound from "./components/NotFound";
 
 function App() {
   const { currentUser } = useAuth()
@@ -60,7 +61,7 @@ function App() {
             </AuthRoute>
           }
         />
-      <Route path='*' element={<h1>Not found</h1>} />
+      <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   );
