@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import command from '../process.js'
+import command from './process.js'
 
 const environment = command.opts().Mode
 console.log(`mode: ${environment}`)
