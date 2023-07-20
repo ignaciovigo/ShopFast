@@ -50,7 +50,6 @@ export default function SessionProvider({ children }) {
       navigate("/products");
       toast.success(result.message);
     } catch (error) {
-      toast.error(error.message);
       console.error(error.message);
       throw error
     }

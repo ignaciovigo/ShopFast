@@ -13,7 +13,7 @@ export default class CartsRouter extends CustomRouter {
 
     this.put('/:cid/product/:pid', { policies: ['USER'], strategy: 'jwt' }, updateProductInCart)
 
-    this.delete('/:cid/product/:pid', { policies: ['PUBLIC'], strategy: 'jwt' }, deleteProductById)
+    this.delete('/:cid/product/:pid', { policies: ['USER'], strategy: 'jwt' }, deleteProductById)
     this.post('/:cid/purchase', { policies: ['USER'], strategy: 'jwt' }, purchase)
   }
 }

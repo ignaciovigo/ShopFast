@@ -13,7 +13,8 @@ import ConnectionToMDB from './db.js'
 import cors from 'cors'
 import MocksRouter from './routes/customRouter/MocksRouter.js'
 import { addLogger, customLogger } from './config/logger.js'
-
+import swaggerJSDoc from 'swagger-jsdoc'
+import swaggerUIExpress from 'swagger-ui-express'
 import cluster from 'cluster'
 import { cpus } from 'os'
 import { faker } from '@faker-js/faker'
@@ -32,6 +33,20 @@ if (cluster.isPrimary) {
 
   const app = express()
   // SETTINGS
+
+  // swagger config
+  const swaggerOpts = {
+    definition: {
+      openapi: '3.0.1',
+      info: {
+        title: 'API ShopFast Documentation',
+        description: 'API Doc description'
+      }
+    },
+    apis: ['./src/docs/**/*.yml']
+  }
+  const specs = swaggerJSDoc(swaggerOpts)
+  app.use('/apidocs', swaggerUIExpress.serve, swaggerUIExpress.setup(specs))
   // to json
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
