@@ -1,4 +1,4 @@
-import { addProductstoCart, createCart, deleteAllproductsInCart, deleteProductById, getCartById, updateProductInCart,purchase } from '../../controllers/carts.controller.js'
+import { addProductstoCart, createCart, deleteAllproductsInCart, deleteProductById, getCartById, updateProductInCart, purchase } from '../../controllers/carts.controller.js'
 import CustomRouter from './CustomRouter.js'
 
 export default class CartsRouter extends CustomRouter {
