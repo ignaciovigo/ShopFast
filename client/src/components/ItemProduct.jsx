@@ -3,10 +3,13 @@ import useCart from "../hooks/useCart";
 import { HiTrash, HiX } from "react-icons/hi";
 import CONSTANTS from "../constants/constants";
 import { toast } from "react-hot-toast";
+import {motion, AnimatePresence} from 'framer-motion'
+import Carousel from "./Carousel";
 export default function ItemProduct({ product, role, refreshProducts }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [urlImage, setUrlImage] = useState(null);
+  const [images, setImages] = useState([])
 
   const {
     title,
@@ -53,7 +56,10 @@ export default function ItemProduct({ product, role, refreshProducts }) {
     }
   };
   const handleClickImage = (e) => {
-    setUrlImage(e.target.src);
+    const arrayOfImgs =  Array.from(e.target.parentNode.childNodes).map((e) => e.src)
+    const index = arrayOfImgs.indexOf(e.target.src)
+    setUrlImage({url: e.target.src, index});
+    setImages(arrayOfImgs)
   };
   return (
     <div
@@ -119,12 +125,12 @@ export default function ItemProduct({ product, role, refreshProducts }) {
         </>
       )}
       {
-        urlImage && (
+        urlImage?.url && (
           <div
-          className='fixed inset-0 bg-black backdrop-blur-md bg-opacity-30 z-30 flex justify-center items-center'
-          onClick={() => setUrlImage(null)}
+          className='fixed inset-0 bg-black backdrop-blur-md bg-opacity-30 z-30 flex justify-center items-center w-full '
+          
         >
-          <section className='flex flex-col p-2 rounded-md max-w-2xl w-full'>
+          <section className='flex justify-center items-center p-2 rounded-md overflow-hidden w-full max-w-[800px] gap-3'>
             <div className='absolute top-0 right-10'>
               <span
                 className='px-2 py-1 rounded-md cursor-pointer'
@@ -133,7 +139,7 @@ export default function ItemProduct({ product, role, refreshProducts }) {
                 <HiX className='text-white pointer-events-none h-7 w-7' />
               </span>
             </div>
-            <img src={urlImage} alt='product image selected' />
+            <Carousel images={images} initialIndex={urlImage.index}  />
           </section>
         </div>
         )
