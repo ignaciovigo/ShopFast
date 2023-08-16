@@ -9,7 +9,7 @@ export default function CartContainer({ showButtonPay }) {
   return (
     <div className='p-4'>
       <div className='flex justify-between items-end mb-1'>
-        <h2 className='text-2xl font-bold'>Your Cart</h2>
+        <h2 className='text-2xl font-bold ff-third'>Your Cart</h2>
         <span
           className={`${cart.length === 0 ? 'hidden' :''} p-2 bg-second flex justify-center items-center text-black rounded-md cursor-pointer`}
           onClick={() => clearCart()}
@@ -24,7 +24,7 @@ export default function CartContainer({ showButtonPay }) {
               {cart.map((e) => {
                 return (
                   <li
-                    className='flex items-center py-4 px-3 bg-[#111111]'
+                    className='flex items-center py-2 px-2 bg-[#111111]'
                     key={e.product.id + "3"}
                   >
                     <img
@@ -32,24 +32,27 @@ export default function CartContainer({ showButtonPay }) {
                       alt={`image product ${e.product.title}`}
                       className='w-16 h-16 mr-4 rounded'
                     />
-                    <div>
-                      <h3 className='text-lg font-bold text-second'>
+                    <div className="w-full">
+                      <h3 className='text-lg font-bold text-second ff-third'>
                         {e.product.title}
                       </h3>
-                      <p className='text-gray-200 text-sm'>
+                      <p className='text-gray-200 text-sm ff-fourth line-clamp-1'>
                         {e.product.description}
                       </p>
-                      <p className='text-gray-500 text-sm flex gap-1'>
-                        Quantity:
-                        <span className='text-gray-200'>{e.quantity}</span>
-                      </p>
-                      <p className='text-gray-500 mt-2 text-md flex gap-1'>
+                      <div className="flex justify-start items-center">
+                      <p className='text-gray-500 text-md flex gap-1 ff-fourth mr-2'>
                         Price:
                         <span className='text-second'>${e.product.price}</span>
                       </p>
+                      <p className='text-gray-500 text-sm flex gap-1 ff-fourth'>
+                        Quantity:
+                        <span className='text-gray-200 font-semibold'>{e.quantity}</span>
+                      </p>
+                      
+                      </div>
                     </div>
                     <span
-                      className='p-2 bg-second  ms-auto text-black rounded-md cursor-pointer'
+                      className='p-2 bg-second  text-black rounded-md cursor-pointer active:scale-90 duration-100'
                       onClick={() => removeToCart(e)}
                     >
                       <HiX className='pointer-events-none h-6 w-6' />
@@ -62,14 +65,14 @@ export default function CartContainer({ showButtonPay }) {
           <div className='mt-4 flex justify-between'>
             {showButtonPay && (
               <>
-                <p className='text-lg text-gray-600 flex gap-2'>
+                <p className='text-lg text-gray-600 flex gap-2 ff-fourth'>
                   Total Price:
-                  <span className='text-black text-lg'>${totalPrice()}</span>
+                  <span className='text-black text-lg font-semibold'>$ {totalPrice()}</span>
                 </p>
                 <Link
                   to={"/cart"}
                   data-btn='close'
-                  className='px-4 py-2 text-sm font-medium text-black bg-second hover:bg-yellow-500 rounded'
+                  className='px-4 py-2 text-sm font-medium text-black bg-second hover:bg-yellow-500 rounded ff-fourth active:scale-90 duration-100'
                 >
                   Pay now
                 </Link>
@@ -79,7 +82,7 @@ export default function CartContainer({ showButtonPay }) {
         </>
       ) : (
         <div className="flex justify-center items-center h-48">
-        <h1 className='text-gray-500 text-3xl ff-second text-center'>
+        <h1 className='text-gray-500 text-3xl ff-second text-center ff-third'>
           Not products
         </h1>
         </div>

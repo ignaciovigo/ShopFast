@@ -19,17 +19,14 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
   return (
     <article className='flex rounded-full bg-neutral-800 p-1'>
       <label htmlFor='searchText' className="flex justify-center items-center ps-2">
-        {
-          isLoading ?  <Spinner classColor='text-second' />:
         <AiOutlineSearch className='text-second w-8 h-8' />
-        }
       </label>
       <input
         type='text'
         value={search}
         onChange={handleChange}
         id='searchText'
-        placeholder='Search products...'
+        placeholder='Search by title or category...'
         className='bg-transparent text-second outline-none rounded-sm h-10'
       />
     </article>

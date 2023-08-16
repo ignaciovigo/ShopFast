@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto+Condensed&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Quicksand&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,6 +16,12 @@ body > div {
 }
 .ff-second {
   font-family: "PT Sans", sans-serif;
+}
+.ff-third {
+  font-family: 'Quicksand', sans-serif;
+}
+.ff-fourth {
+  font-family: 'Nunito', sans-serif;
 }
 
 --first-color {
@@ -123,8 +130,28 @@ body > div {
   height: 500px;
   background-color: #f52103;
 }
+
+.scrollbar::-webkit-scrollbar{
+  width: 5px;
+  background: #f1f1f1;
+}
+.scrollbar::-webkit-scrollbar-track {
+  background: #cec9c99c; /* Color de fondo de la barra de desplazamiento */
+  border-radius: 5px;
+
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #b6b5b5; /* Color del "pulgar" de la barra de desplazamiento */
+  border-radius: 5px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color del "pulgar" de la barra de desplazamiento al pasar el cursor */
+}
+
 .customLinks {
-  @apply bg-transparent text-gray-400 hover:text-gray-200 hover:bg-neutral-800 duration-300 ease-in transition-all px-2 py-2 ff-second text-lg
+  @apply bg-transparent text-gray-400 hover:text-gray-200 hover:bg-neutral-800 duration-300 ease-in transition-all px-2 py-2 ff-fourth text-lg
 }
 
 .dropdown {

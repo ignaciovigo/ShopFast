@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "framer-motion": "^10.15.2",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.0",
     "just-debounce-it": "^3.2.0",

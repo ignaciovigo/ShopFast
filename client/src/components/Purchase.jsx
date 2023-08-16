@@ -78,18 +78,18 @@ export default function Purchase() {
   return (
     <div className='max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8'>
       <div className='bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2'>
-        <h2 className='text-2xl font-bold mb-4 md:col-span-3 p-2'>Purchase</h2>
+        <h2 className='text-2xl font-bold mb-4 md:col-span-3 p-2 ff-third ps-4'>Purchase</h2>
         <CartContainer />
         <div className='bg-white rounded-lg shadow-md p-6'>
           <section className='w-full flex flex-col justify-center items-center'>
-            <h1 className='text-2xl font-bold text-black'>
+            <h1 className='text-2xl font-bold text-black ff-fourth'>
               Total Price ${totalPrice()}
             </h1>
             <div>
               <button
                 disabled={isLoading}
                 onClick={handleClick}
-                className='bg-second hover:bg-yellow-500 text-black font-bold flex py-2 px-4 rounded'
+                className='bg-second hover:bg-yellow-500 text-black font-bold flex py-2 px-4 rounded active:scale-90 duration-100 ff-third'
               >
                 {isLoading ? (
                   <>

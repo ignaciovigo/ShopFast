@@ -2,9 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import AuthRoute from "./components/AuthRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
-const Main = lazy(() => import("./components/Main"));
-const Login = lazy(() => import("./components/Login"));
-const Register = lazy(() => import("./components/Register"));
+import Main from './components/Main'
+import Login from './components/Login'
+import Register from "./components/Register";
 import { Toaster } from "react-hot-toast";
 import Loading from "./components/Loading";
 import ProfileContainer from "./components/ProfileContainer";
@@ -26,11 +26,9 @@ function App() {
           path='/'
           element={
             <ProtectedRoute>
-              <Suspense fallback={<Loading />}>
                 <CartProvider>
                     <Main />
                 </CartProvider>
-              </Suspense>
             </ProtectedRoute>
           }
         >
@@ -45,9 +43,7 @@ function App() {
           index
           element={
             <AuthRoute>
-              <Suspense fallback={<Loading />}>
                 <Login />
-              </Suspense>
             </AuthRoute>
           }
         />
@@ -55,9 +51,7 @@ function App() {
           path='/register'
           element={
             <AuthRoute>
-              <Suspense fallback={<Loading />}>
                 <Register />
-              </Suspense>
             </AuthRoute>
           }
         />

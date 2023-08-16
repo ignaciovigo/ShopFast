@@ -8,9 +8,9 @@ export default function ProfileContainer() {
 
             <div className="px-4 py-5 sm:px-6 flex">
                 <div>
-                    <h3 className="text-lg leading-6 font-medium text-gray-900">Profile</h3>
+                    <h3 className="text-2xl leading-6 font-bold text-gray-900 ff-third">Profile</h3>
                 </div>
-                <p className="m-auto max-w-2xl text-lg text-gray-900 font-bold">
+                <p className="m-auto max-w-2xl text-xl text-gray-900 font-bold ff-third">
                     Welcome back!
                 </p>
             </div>

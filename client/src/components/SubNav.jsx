@@ -15,7 +15,7 @@ export default function SubNav() {
         <div className='flex gap-3'>
           {
             currentUser?.role === 'USER' && (
-        <Modal title='Your Cart'>
+        <Modal title='Your Cart' isCart>
           <CartContainer showButtonPay/>
         </Modal>
             )

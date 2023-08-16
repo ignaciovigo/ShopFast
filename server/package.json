@@ -38,7 +38,10 @@
   },
   "devDependencies": {
     "artillery": "^2.0.0-34",
-    "standard": "^17.0.0"
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "standard": "^17.0.0",
+    "supertest": "^6.3.3"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"
