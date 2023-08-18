@@ -92,4 +92,4 @@ function generateProducts ({ numOfProducts = 50 }) {
   return products
 }
 
-export { __dirname, patterns, getLink, createHash, isValidPassword, generateToken, randomString, transport, formatDate, generateProducts }
+export { __dirname, patterns, getLink, createHash, isValidPassword, generateToken, randomString, formatDate, generateProducts }
