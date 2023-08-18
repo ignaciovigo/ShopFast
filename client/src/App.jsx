@@ -5,7 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Main from './components/Main'
 import Login from './components/Login'
 import Register from "./components/Register";
-import { Toaster } from "react-hot-toast";
+import { ToastBar, Toaster } from "react-hot-toast";
 import Loading from "./components/Loading";
 import ProfileContainer from "./components/ProfileContainer";
 import HistoryContainer from "./components/HistoryContainer";
@@ -20,7 +20,17 @@ function App() {
   const { currentUser } = useAuth()
   return (
     <>
-      <Toaster />
+      <Toaster  
+      toastOptions={{
+        className: 'ff-second semibold' ,
+        success: {
+          className:'bg-green-200',
+          },
+          error: {
+            className:'bg-red-200',
+            }
+      }} 
+  />
       <Routes>
         <Route
           path='/'

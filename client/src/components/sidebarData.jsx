@@ -17,7 +17,7 @@ const SidebarData = [
     role: ['USER']
   },
   {
-    title: "Add products",
+    title: "Users",
     path: "/adminpanel",
     icon: <FaMicrosoft />,
     role: ['ADMIN'],

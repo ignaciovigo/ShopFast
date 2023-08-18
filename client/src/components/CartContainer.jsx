@@ -2,7 +2,6 @@ import React from "react";
 import useCart from "../hooks/useCart";
 import { HiTrash, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
-
 export default function CartContainer({ showButtonPay }) {
   const { cart, totalPrice, clearCart, removeToCart } = useCart();
 

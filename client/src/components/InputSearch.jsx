@@ -27,7 +27,7 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
         onChange={handleChange}
         id='searchText'
         placeholder='Search by title or category...'
-        className='bg-transparent text-second outline-none rounded-sm h-10'
+        className='bg-transparent text-second outline-none rounded-sm h-8'
       />
     </article>
   );

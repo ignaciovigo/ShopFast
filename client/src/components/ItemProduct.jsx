@@ -5,7 +5,7 @@ import CONSTANTS from "../constants/constants";
 import { toast } from "react-hot-toast";
 import {motion, AnimatePresence} from 'framer-motion'
 import Carousel from "./Carousel";
-export default function ItemProduct({ product, role, refreshProducts }) {
+export default function ItemProduct({ product, role }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [urlImage, setUrlImage] = useState(null);
@@ -38,23 +38,7 @@ export default function ItemProduct({ product, role, refreshProducts }) {
       setQuantity(quantity + 1);
     }
   };
-  const handleRemove = async () => {
-    try {
-      const result = await fetch(CONSTANTS.PRODUCTS_URL + `/${id}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
-      const resp = await result.json();
-      if (resp.status === "success") {
-        refreshProducts();
-        toast.success(resp.message);
-      } else {
-        throw resp;
-      }
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
+
   const handleClickImage = (e) => {
     const arrayOfImgs =  Array.from(e.target.parentNode.childNodes).map((e) => e.src)
     const index = arrayOfImgs.indexOf(e.target.src)
@@ -88,11 +72,6 @@ export default function ItemProduct({ product, role, refreshProducts }) {
 
           </div>
         </div>
-        {role === "ADMIN" && (
-          <button className='p-2 bg-red-300 rounded-md' onClick={handleRemove}>
-            <HiTrash className='h-5 w-5 pointer-events-none text-red-800' />
-          </button>
-        )}
       </div>
       <p className='text-gray-700 leading-tight break-words text-sm overflow-y-auto max-h-16 ff-third scrollbar font-bold'>
         {description}
@@ -125,7 +104,7 @@ export default function ItemProduct({ product, role, refreshProducts }) {
         </>
       )}
       {
-        urlImage?.url && (
+        urlImage?.url && ( 
           <div
           className='fixed inset-0 bg-black backdrop-blur-md bg-opacity-30 z-30 flex justify-center items-center w-full '
           

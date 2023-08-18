@@ -16,7 +16,7 @@ const variants = {
     },
     exit: (direction) => {
       return {
-        x: direction < 0 ? -1000 : 1000,
+        x: direction < 0 ? 1000 : -1000,
         opacity: 0
       };
     }
