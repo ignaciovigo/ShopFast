@@ -1,5 +1,5 @@
+import MailingService from '../services/MailingService.js'
 import { cartService, productService, ticketService } from '../services/repositories/index.js'
-import { transport } from '../utils.js'
 
 // POST /api/carts/
 export async function createCart (req, res) {
@@ -126,17 +126,20 @@ export async function purchase (req, res) {
       const amount = purchasedProducts.reduce((acc, e) => (e.price * e.quantity) + acc, 0)
       const { _id } = await ticketService.generate({ email: req.user.email, amount: amount.toFixed(2), products: purchasedProducts })
       const ticket = await ticketService.getById({ ticketId: _id })
-      req.logger.info(`this is the ticket ${ticket}`)
-      transport.sendMail({
+      req.logger.debug(`this is the ticket ${JSON.stringify(ticket)}`)
+      const mail = {
         from: 'Test',
         to: req.user.email,
-        subject: 'You have purchased',
-        text: `Recently you has made a buy with the following products: ${purchasedProducts.map(e => e.title).join(', ')}
+        subject: 'ShopFast',
+        text: `Recently you have made a buy with the following products: ${purchasedProducts.map(e => `${e.title} x ${e.quantity}`).join(', ')}
         And these products could not processed: ${failedProducts.map(e => e.title).join(', ') || 0}
+        Total amount: $${ticket.amount}
+
+        Thanks for your buy!
         `
-      }, (error, info) => {
-        return res.sendServerError(error)
-      })
+      }
+      const mailingService = new MailingService()
+      await mailingService.sendSimpleMail(mail)
     }
 
     await cartService.insertProducts({ cartId: cid, arrProducts: failedProducts })

@@ -19,5 +19,6 @@ export default {
   URL_REACT_APP: process.env.URL_REACT_APP,
   NODEMAILER: process.env.NODEMAILER,
   EMAIL: process.env.EMAIL,
+  MAIL_SERVICE: process.env.MAIL_SERVICE,
   environment
 }

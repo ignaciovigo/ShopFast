@@ -4,7 +4,6 @@ import { dirname } from 'path'
 import brcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import crypto from 'crypto'
-import nodemailer from 'nodemailer'
 import { faker } from '@faker-js/faker'
 const fileName = fileURLToPath(import.meta.url)
 const __dirname = dirname(fileName)
@@ -59,15 +58,6 @@ const generateToken = (user) => {
 function randomString (length) {
   return crypto.randomBytes(Math.ceil(length / 2)).toString('hex').slice(0, length)
 }
-
-const transport = nodemailer.createTransport({
-  service: 'gmail',
-  port: 587,
-  auth: {
-    user: config.EMAIL,
-    pass: config.NODEMAILER
-  }
-})
 
 const formatDate = (dateTimeString) => {
   const dateTime = new Date(dateTimeString);
