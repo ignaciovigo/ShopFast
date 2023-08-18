@@ -14,7 +14,7 @@ export default function ProductTable({
     setToggleModal(!toggleModal);
   };
   return (
-    <div className='relative shadow-md sm:rounded-lg max-w-2xl w-full flex flex-col gap-2'>
+    <div className='relative shadow-md sm:rounded-lg w-full flex flex-col gap-2'>
       <button
         className='bg-second hover:bg-yellow-500 black text-sm  py-2 px-4 rounded focus:outline-gray-500 flex gap-1 items-center justify-center focus:shadow-outline ff-third text-black w-fit'
         type='button'
@@ -34,25 +34,28 @@ export default function ProductTable({
           </section>
         </div>
       )}
+      <div className="w-full overflow-x-auto scrollbar">
+
+      
       <table className='w-full text-sm text-left  text-gray-500 dark:text-gray-400'>
         <thead className='text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ff-fourth'>
           <tr className=' sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0'>
             <th scope='col' className='md:px-3 md:py-3'>
               Product title
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1'>
+            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
               Price
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1'>
+            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
               CODE
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1'>
+            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
               Stock
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1'>
+            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
               Category
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1'>
+            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
               status
             </th>
             <th scope='col' className='md:py-3 px-1 py-1 text-center'>
@@ -70,6 +73,8 @@ export default function ProductTable({
           ))}
         </tbody>
       </table>
+
+      </div>
     </div>
   );
 }

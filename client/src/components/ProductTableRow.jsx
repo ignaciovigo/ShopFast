@@ -53,7 +53,7 @@ export default function ProductTableRow({
         </th>
         <td className='md:py-3 px-1 py-1'>${price}</td>
         <td className='md:py-3 px-1 py-1'>{code}</td>
-        <td className='md:py-3 px-1 py-1 text-center'>{stock}</td>
+        <td className='md:py-3 px-1 py-1'>{stock}</td>
         <td className='md:py-3 px-1 py-1'>{category}</td>
         <td className='md:py-3 px-1 py-1'>
           {status == true ? (

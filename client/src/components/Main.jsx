@@ -7,9 +7,9 @@ export default function Main() {
     <>
       <main className='w-full h-full flex bg-slate-700'>
         <SideBar />
-        <section className='flex flex-col w-full h-full'>
+        <section className='flex flex-col w-full h-full overflow-y-auto'>
           <SubNav />
-          <article className="h-full w-full overflow-y-auto">
+          <article className="h-full w-full">
             <Outlet />
           </article>
         </section>

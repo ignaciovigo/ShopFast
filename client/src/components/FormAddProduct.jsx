@@ -230,7 +230,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
           </div>
           <div className="flex justify-evenly gap-2 w-full col-span-1 sm:col-span-2">
           <button
-          className="bg-red-200 transition-colors duration-100 ease-in hover:bg-red-400 black font-bold py-2 px-4 rounded focus:outline-gray-500 focus:shadow-outline ff-third text-black"
+          className="bg-red-400 transition-colors duration-100 ease-in hover:bg-red-500 black font-bold py-2 px-4 rounded focus:outline-gray-500 focus:shadow-outline ff-third text-black"
           type="button"
           onClick={toggle}
           >

@@ -17,7 +17,7 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
     debounceProducts(newSearch)
   };
   return (
-    <article className='flex rounded-full bg-neutral-800 p-1'>
+    <article className='flex rounded-full bg-neutral-800 p-1 w-full'>
       <label htmlFor='searchText' className="flex justify-center items-center ps-2">
         <AiOutlineSearch className='text-second w-8 h-8' />
       </label>
@@ -27,7 +27,7 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
         onChange={handleChange}
         id='searchText'
         placeholder='Search by title or category...'
-        className='bg-transparent text-second outline-none rounded-sm h-8'
+        className='bg-transparent text-second outline-none rounded-sm h-8 w-full'
       />
     </article>
   );
