@@ -43,19 +43,19 @@ export default function ProductTable({
             <th scope='col' className='md:px-3 md:py-3'>
               Product title
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
+            <th scope='col' className='md:py-3 px-1 py-1'>
               Price
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
+            <th scope='col' className='md:py-3 px-1 py-1'>
               CODE
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
+            <th scope='col' className='md:py-3 px-1 py-1'>
               Stock
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
+            <th scope='col' className='md:py-3 px-1 py-1'>
               Category
             </th>
-            <th scope='col' className='md:py-3 px-1 py-1 hidden md:table-cell'>
+            <th scope='col' className='md:py-3 px-1 py-1'>
               status
             </th>
             <th scope='col' className='md:py-3 px-1 py-1 text-center'>

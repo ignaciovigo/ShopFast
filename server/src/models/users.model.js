@@ -35,6 +35,10 @@ const userSchema = mongoose.Schema(
     cartId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'carts'
+    },
+    lastActivity: {
+      type: Date,
+      default: Date.now
     }
   }
 )

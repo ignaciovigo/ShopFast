@@ -12,5 +12,6 @@ export default class UserDTO {
     this.role = user.role
     this.githubId = user.githubId || null
     this.cartId = user.cartId.toString()
+    this.lastActivity = user.lastActivity
   }
 }

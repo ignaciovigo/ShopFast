@@ -1,7 +1,7 @@
 import CustomError from '../services/errors/CustomError.js'
 import EErrors from '../services/errors/enums.js'
 import { createProductErrorInfo } from '../services/errors/info.js'
-import { productService } from '../services/repositories/index.js'
+import { productService, userService } from '../services/repositories/index.js'
 import { getLink } from '../utils.js'
 
 // Controller for /api/products and some query params
@@ -11,6 +11,7 @@ export async function getProducts (req, res) {
     if (limit && isNaN(Number(limit))) return res.sendUserError('The limit param given must be a number')
     if (page && isNaN(Number(page))) return res.sendUserError('The page param given must be a number')
     if (sort && sort !== 'asc' && sort !== 'desc') return res.sendUserError('The sort param given must be a value "asc" or "desc" ')
+    userService.registerLastActivity({ email: req.user.email })
     const result = await productService.getAll({ limit, page, sort, query })
     // Adding properties nextLink and prevLink to result
     const { prevLink, nextLink } = getLink(req, result)

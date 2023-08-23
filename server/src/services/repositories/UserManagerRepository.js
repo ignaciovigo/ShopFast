@@ -6,6 +6,11 @@ export default class UserManagerRepository {
     this.dao = dao
   }
 
+  async getAll () {
+    const users = await this.dao.getAll()
+    return users
+  }
+
   async getByEmail ({ email, sensitive }) {
     const result = await this.dao.getByEmail({ email })
     if (result) {
@@ -36,5 +41,20 @@ export default class UserManagerRepository {
     const result = await this.dao.updateUser({ email, updates })
     const userFormat = new UserDTO({ user: result, sensitive })
     return userFormat
+  }
+
+  async registerLastActivity ({ email }) {
+    const lastAct = await this.dao.registerLastActivity({ email })
+    return lastAct
+  }
+
+  async removeUserById ({ id }) {
+    const result = await this.dao.removeUserById({ id })
+    return result
+  }
+
+  async removeUsers () {
+    const result = await this.dao.removeUsers()
+    return result
   }
 }

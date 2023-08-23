@@ -20,5 +20,7 @@ export default {
   NODEMAILER: process.env.NODEMAILER,
   EMAIL: process.env.EMAIL,
   MAIL_SERVICE: process.env.MAIL_SERVICE,
+  ADMIN_GMAIL_ACC: process.env.ADMIN_GMAIL_ACC,
+  ADMIN_PASSWORD_ACC: process.env.ADMIN_PASSWORD_ACC,
   environment
 }
