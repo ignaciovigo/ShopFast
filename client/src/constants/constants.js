@@ -1,4 +1,4 @@
-const URL ='http://localhost:8080'
+const URL ='https://shopfast-fxgq-dev.fl0.io'
 const CONSTANTS = {
     LOGIN_URL : `${URL}/api/jwt/login`,
     REGISTER_URL: `${URL}/api/users/register`,
