@@ -44,9 +44,9 @@ function App() {
         >
           <Route index path="products" element={<ProductsContainer />} />
           <Route path='profile' element={<ProfileContainer />} />
-          {currentUser?.role === 'USER' && (<Route path='history' element={<HistoryContainer />} />)}
-          {currentUser?.role === 'USER' && ( <Route path='cart' element={<Purchase />} />)}
-          {currentUser?.role === 'ADMIN' && (<Route path='adminpanel' element={<AdminPanelContainer />} />)}
+          {['USER', 'PREMIUM'].includes(currentUser?.role) && (<Route path='history' element={<HistoryContainer />} />)}
+          {['USER', 'PREMIUM'].includes(currentUser?.role) && ( <Route path='cart' element={<Purchase />} />)}
+          {currentUser?.role === 'ADMIN' && (<Route path='usermanagement' element={<AdminPanelContainer />} />)}
         </Route>
         <Route
           path='/login'

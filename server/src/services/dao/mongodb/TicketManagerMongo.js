@@ -11,10 +11,10 @@ export default class TicketManagerMongo {
     return TicketManagerMongo.#instance
   }
 
-  async generate ({ email, amount, products }) {
+  async generate ({ email, amount, products, address }) {
     try {
       const code = crypto.randomUUID().slice(-12)
-      const ticket = await ticketModel.create({ email, code, amount, products })
+      const ticket = await ticketModel.create({ email, code, amount, products, address })
       return ticket
     } catch (error) {
       throw Error(error.message)

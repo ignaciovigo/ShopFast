@@ -1,3 +1,5 @@
+import config from '../config/config.js'
+import MailingService from '../services/MailingService.js'
 import CustomError from '../services/errors/CustomError.js'
 import EErrors from '../services/errors/enums.js'
 import { createProductErrorInfo } from '../services/errors/info.js'
@@ -14,7 +16,7 @@ export async function getProducts (req, res) {
     userService.registerLastActivity({ email: req.user.email })
     const result = await productService.getAll({ limit, page, sort, query })
     // Adding properties nextLink and prevLink to result
-    const { prevLink, nextLink } = getLink(req, result)
+    const { prevLink, nextLink } = getLink(req, result, 'products')
     // Excluding some properties of the result
     const { docs, totalDocs, pagingCounter, ...resp } = result
     return res.sendSuccess({ docs, ...resp, prevLink, nextLink })
@@ -47,7 +49,7 @@ export async function addProduct (req, res) {
     })
   }
   // if (!newProduct) return res.sendUserError('The data received is incorrect')
-  const result = await productService.addProduct({ title, description, price, thumbnails, code, stock, status, category })
+  const result = await productService.addProduct({ title, description, price, thumbnails, code, stock, status, category, owner: req.user.email })
   if (!result) return res.sendServerError('Could not add product')
   return res.sendSuccessInfo(`Product added with id ${result._id}`)
 }
@@ -70,8 +72,22 @@ export async function deleteProduct (req, res) {
   try {
     const { pid } = req.params
     if (typeof pid !== 'string') return res.sendUserError('The id provided must be a string')
+    const search = await productService.getById(pid)
+    if (!search) return res.sendUserError('Product not found')
     const result = await productService.deleteProductById(pid)
     if (!result) return res.sendUserError('Product not found')
+    if (search.owner !== config.ADMIN_GMAIL_ACC) {
+      const mail = {
+        from: 'Test',
+        to: search.owner,
+        subject: 'ShopFast',
+        text: `Your product with id ${pid} is going to be deleted
+        Thanks for your buy!
+        `
+      }
+      const mailingService = new MailingService()
+      await mailingService.sendSimpleMail(mail)
+    }
     return res.sendSuccessInfo(result)
   } catch (error) {
     if (error.name === 'client') return res.sendUserError(error.message)

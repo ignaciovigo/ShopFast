@@ -1,4 +1,4 @@
-import { HiChevronDown } from "react-icons/hi";
+import { HiChevronDown, HiMenuAlt4 } from "react-icons/hi";
 import Spinner from "./Spinner";
 import { useTicketData } from "../hooks/useTicketData";
 import { motion } from "framer-motion";
@@ -25,7 +25,8 @@ export default function HistoryContainer() {
             <h2 className='text-2xl font-bold ff-third'>Your tickets</h2>
           </div>
 
-          {ticketsData.map((ticket, index) => (
+          {ticketsData.length > 0
+          ? ticketsData.map((ticket, index) => (
             <motion.div
               initial='hidden'
               animate='visible'
@@ -63,13 +64,18 @@ export default function HistoryContainer() {
                   variants={variants}
                   className='mt-2 transition-all duration-300 ease-in'
                 >
+                   <p className='text-gray-600 mb-2 ff-third'>
+                    Address: {ticket.address}
+                  </p>
                   <p className='text-gray-800 ff-fourth'>
                     Products: {ticket.products}
                   </p>
                 </motion.div>
               )}
             </motion.div>
-          ))}
+          ))
+        :
+        <h4 className="ff-third text-2xl font-semibold text-gray-500 text-center">No tickets</h4>}
           {hasNextPage && (
             <div className='text-center mt-4'>
               <button

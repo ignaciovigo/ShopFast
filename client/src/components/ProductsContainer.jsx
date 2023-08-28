@@ -5,6 +5,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import InputSearch from "./InputSearch";
 import { useAuth } from "../hooks/useAuth";
 import ProductTable from "./ProductTable";
+import BtnAddProductsModal from "./BtnAddProductsModal";
 
 export default function ProductsContainer() {
   const [search, setSearch] = useState("");
@@ -26,12 +27,18 @@ export default function ProductsContainer() {
   }
   return (
     <section className='h-full w-full flex flex-col gap-5 items-start py-4 px-3'>
-      <InputSearch getProductsBySearch={getProductsBySearch} search={search} setSearch={setSearch} isLoading={isLoading}  />
+      <InputSearch getProductsBySearch={getProductsBySearch} search={search} setSearch={setSearch} isLoading={isLoading} placeholder='Search by title or category...' />
       {
-        currentUser.role === 'USER' ? <ProductList role={currentUser.role} getProducts={getProducts} setSearch={setSearch} products={products} isLoading={isLoading} /> : ""
+        currentUser.role === 'USER' && <ProductList role={currentUser.role} getProducts={getProducts} setSearch={setSearch} products={products} isLoading={isLoading} />
       }
       {
-        currentUser.role === 'ADMIN' ? <ProductTable getProducts={getProducts} setSearch={setSearch} products={products} isLoading={isLoading} refreshProducts={refreshProducts} /> : ""
+        currentUser.role === 'ADMIN' && <ProductTable getProducts={getProducts} setSearch={setSearch} products={products} isLoading={isLoading} refreshProducts={refreshProducts} />
+      }
+      {
+        currentUser.role === 'PREMIUM' && <>
+        <BtnAddProductsModal refreshProducts={refreshProducts} />
+        <ProductList role={currentUser.role} getProducts={getProducts} setSearch={setSearch} products={products} isLoading={isLoading} />
+        </>
       }
       <div className="flex justify-center items-center gap-3 mt-auto w-full">
         {

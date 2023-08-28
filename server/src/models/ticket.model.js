@@ -33,6 +33,9 @@ const ticketSchema = mongoose.Schema(
     },
     purchaser: {
       type: String
+    },
+    address: {
+      type: String
     }
   }
 )

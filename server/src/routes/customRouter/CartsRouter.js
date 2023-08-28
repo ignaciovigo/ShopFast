@@ -3,17 +3,17 @@ import CustomRouter from './CustomRouter.js'
 
 export default class CartsRouter extends CustomRouter {
   init () {
-    this.post('/', { policies: ['USER'], strategy: 'jwt' }, createCart)
+    this.post('/', { policies: ['USER', 'PREMIUM'], strategy: 'jwt' }, createCart)
 
-    this.get('/:cid', { policies: ['USER'], strategy: 'jwt' }, getCartById)
+    this.get('/:cid', { policies: ['USER', 'PREMIUM'], strategy: 'jwt' }, getCartById)
 
-    this.put('/:cid', { policies: ['USER'], strategy: 'jwt' }, addProductstoCart)
+    this.put('/:cid', { policies: ['USER', 'PREMIUM'], strategy: 'jwt' }, addProductstoCart)
 
-    this.delete('/:cid', { policies: ['USER'], strategy: 'jwt' }, deleteAllproductsInCart)
+    this.delete('/:cid', { policies: ['USER', 'PREMIUM'], strategy: 'jwt' }, deleteAllproductsInCart)
 
-    this.put('/:cid/product/:pid', { policies: ['USER'], strategy: 'jwt' }, updateProductInCart)
+    this.put('/:cid/product/:pid', { policies: ['USER', 'PREMIUM'], strategy: 'jwt' }, updateProductInCart)
 
-    this.delete('/:cid/product/:pid', { policies: ['USER'], strategy: 'jwt' }, deleteProductById)
-    this.post('/:cid/purchase', { policies: ['USER'], strategy: 'jwt' }, purchase)
+    this.delete('/:cid/product/:pid', { policies: ['USER', 'PREMIUM'], strategy: 'jwt' }, deleteProductById)
+    this.post('/:cid/purchase', { policies: ['USER', 'PREMIUM'], strategy: 'jwt' }, purchase)
   }
 }

@@ -6,7 +6,8 @@ const CONSTANTS = {
     USER_URL: `${URL}/api/users/data`,
     PRODUCTS_URL: `${URL}/api/products`,
     CART_URL:`${URL}/api/carts`,
-    USER_TICKETS_URL:`${URL}/api/users/tickets`
+    USER_TICKETS_URL:`${URL}/api/users/tickets`,
+    ALL_USERS_URL: `${URL}/api/users`
 }
 
 export default CONSTANTS

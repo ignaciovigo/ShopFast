@@ -4,8 +4,8 @@ export default class TicketManagerRepository {
     this.dao = dao
   }
 
-  async generate ({ email, amount, products }) {
-    const ticket = await this.dao.generate({ email, amount, products })
+  async generate ({ email, amount, products, address }) {
+    const ticket = await this.dao.generate({ email, amount, products, address })
     return ticket
   }
 

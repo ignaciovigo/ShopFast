@@ -85,7 +85,7 @@ const initializePassport = () => {
 function cookieExtractor (req) {
   let token = null
   if (req && req.cookies) {
-    customLogger.info('Cookies exists in the req cookie!')
+    customLogger.debug('Cookies exists in the req cookie!')
     token = req.cookies.jwtCookie
   }
   return token

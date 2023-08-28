@@ -1,9 +1,8 @@
 import { AiOutlineSearch } from "react-icons/ai";
 import debounce from 'just-debounce-it'
 import { useCallback } from "react";
-import Loader from "./Loader";
-import Spinner from "./Spinner";
-export default function InputSearch({ getProductsBySearch, search, setSearch, isLoading }) {
+
+export default function InputSearch({ getProductsBySearch, search, setSearch, isLoading, placeholder }) {
 
  const debounceProducts = useCallback(
     debounce((newSearch) => {
@@ -17,7 +16,7 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
     debounceProducts(newSearch)
   };
   return (
-    <article className='flex rounded-full bg-neutral-800 p-1 w-full'>
+    <article className='flex rounded-lg bg-neutral-800 p-1 w-full'>
       <label htmlFor='searchText' className="flex justify-center items-center ps-2">
         <AiOutlineSearch className='text-second w-8 h-8' />
       </label>
@@ -26,7 +25,7 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
         value={search}
         onChange={handleChange}
         id='searchText'
-        placeholder='Search by title or category...'
+        placeholder={placeholder}
         className='bg-transparent text-second outline-none rounded-sm h-8 w-full'
       />
     </article>

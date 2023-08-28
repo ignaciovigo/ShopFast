@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { HiShoppingCart, HiX } from "react-icons/hi";
 import {motion} from 'framer-motion'
-//todo hacer el carrito y el tikect ademas del chat, tambien los permisos de las rutas de productos
+
 export default function Modal({ children, isCart }) {
   const [toggleModal, setToggleModal] = useState(false);
   const handleClick = () => {

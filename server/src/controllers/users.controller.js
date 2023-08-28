@@ -1,6 +1,6 @@
 import MailingService from '../services/MailingService.js'
 import { cartService, ticketService, userService } from '../services/repositories/index.js'
-import { formatDate } from '../utils.js'
+import { formatDate, getLink } from '../utils.js'
 
 export async function registerUser (req, res) {
   const { firstName, lastName, email, age, password } = req.body
@@ -40,7 +40,7 @@ export async function getTickets (req, res) {
     if (docs.length === 0) return res.sendSuccessInfo('Not tickets')
     const tickets = docs.map((ticket) => {
       const products = ticket.products?.map(e => (`${e.product?.title} x ${e.quantity}`)).join(', ')
-      return { time: formatDate(ticket.time), amount: ticket.amount, products }
+      return { time: formatDate(ticket.time), amount: ticket.amount, products, address: ticket.address }
     })
     req.logger.info(`Tickets ${tickets}`)
     return res.sendSuccess({ tickets, totalPages, hasNextPage })
@@ -52,8 +52,13 @@ export async function getTickets (req, res) {
 
 export async function getAllUsers (req, res) {
   try {
-    const users = await userService.getAll()
-    return res.sendSuccess(users)
+    const { limit, page, query } = req.query
+    if (limit && isNaN(Number(limit))) return res.sendUserError('The limit param given must be a number')
+    if (page && isNaN(Number(page))) return res.sendUserError('The page param given must be a number')
+    const users = await userService.getAll({ limit, page, query })
+    const { prevLink, nextLink } = getLink(req, users, 'users')
+    const { docs, totalDocs, pagingCounter, ...resp } = users
+    return res.sendSuccess({ docs, ...resp, prevLink, nextLink })
   } catch (error) {
     req.logger.error('Could not get all the users')
     return res.sendServerError('Could not get all the users')
@@ -86,4 +91,22 @@ export async function removeUserById (req, res) {
   const result = await userService.removeUserById({ id: uid })
   if (!result) return res.sendUserError('User not found')
   res.sendSuccessInfo('The user was removed')
+}
+
+export async function updateUserRole (req, res) {
+  try {
+    const { email, update } = req.body
+    if (!email) return res.sendUserError('No email has been provided')
+    if (typeof email !== 'string') return res.sendUserError('The id provided must be a string')
+    if (!update.role) return res.sendUserError('Must be provide the property role')
+    const { role } = update
+    if (role !== 'USER' && role !== 'PREMIUM') return res.sendUserError('The role provided is invalid')
+    const result = await userService.updateUser({ email, updates: { role }, sensitive: false })
+    if (!result) return res.sendUserError('User not found')
+    return res.sendSuccessInfo('The role was successfully changed')
+  } catch (err) {
+    if (err.name === 'client') return res.sendUserError(err.message)
+    req.logger.error(`Could not modify the role: ${err.message}`)
+    return res.sendServerError(err.message)
+  }
 }

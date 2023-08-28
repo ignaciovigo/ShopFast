@@ -99,9 +99,10 @@ export async function deleteAllproductsInCart (req, res) {
 }
 export async function purchase (req, res) {
   const { cid } = req.params
-  if (!cid) {
-    return res.sendUserError('Cart ID is invalid')
-  }
+  const { address, creditCard } = req.body
+  if (!address || typeof address !== 'string') return res.sendUserError('Address is invalid')
+  if (!creditCard || isNaN(Number(creditCard))) return res.sendUserError('CreditCard is invalid')
+  if (!cid) return res.sendUserError('Cart ID is invalid')
 
   try {
     const { products } = await cartService.getCart(cid)
@@ -124,7 +125,7 @@ export async function purchase (req, res) {
 
     if (purchasedProducts.length > 0) {
       const amount = purchasedProducts.reduce((acc, e) => (e.price * e.quantity) + acc, 0)
-      const { _id } = await ticketService.generate({ email: req.user.email, amount: amount.toFixed(2), products: purchasedProducts })
+      const { _id } = await ticketService.generate({ email: req.user.email, amount: amount.toFixed(2), products: purchasedProducts, address })
       const ticket = await ticketService.getById({ ticketId: _id })
       req.logger.debug(`this is the ticket ${JSON.stringify(ticket)}`)
       const mail = {

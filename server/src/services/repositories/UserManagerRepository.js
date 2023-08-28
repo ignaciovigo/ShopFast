@@ -6,8 +6,8 @@ export default class UserManagerRepository {
     this.dao = dao
   }
 
-  async getAll () {
-    const users = await this.dao.getAll()
+  async getAll ({ limit, page, query }) {
+    const users = await this.dao.getAll({ limit, page, query })
     return users
   }
 

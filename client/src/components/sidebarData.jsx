@@ -8,17 +8,17 @@ const SidebarData = [
     title: "Products",
     path: '/products',
     icon: <HiShoppingBag />,
-    role: ['USER','ADMIN']
+    role: ['USER','ADMIN', 'PREMIUM']
   },
   {
     title: "History",
     path: "/history",
     icon: <FaClipboardList />,
-    role: ['USER']
+    role: ['USER', 'PREMIUM']
   },
   {
     title: "Users",
-    path: "/adminpanel",
+    path: "/usermanagement",
     icon: <FaMicrosoft />,
     role: ['ADMIN'],
   },
@@ -26,7 +26,7 @@ const SidebarData = [
     title: "Cart",
     path: "/cart",
     icon: <HiShoppingCart />,
-    role: ['USER']
+    role: ['USER', 'PREMIUM']
   },
 ];
 

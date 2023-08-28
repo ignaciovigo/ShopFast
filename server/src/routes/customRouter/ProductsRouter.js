@@ -3,11 +3,11 @@ import CustomRouter from './CustomRouter.js'
 
 export default class ProductsRouter extends CustomRouter {
   init () {
-    this.get('/', { policies: ['USER', 'ADMIN'], strategy: 'jwt' }, getProducts)
+    this.get('/', { policies: ['USER', 'ADMIN', 'PREMIUM'], strategy: 'jwt' }, getProducts)
 
-    this.get('/:pid', { policies: ['USER', 'ADMIN'], strategy: 'jwt' }, getProductById)
+    this.get('/:pid', { policies: ['USER', 'ADMIN', 'PREMIUM'], strategy: 'jwt' }, getProductById)
 
-    this.post('/', { policies: ['ADMIN'], strategy: 'jwt' }, addProduct)
+    this.post('/', { policies: ['ADMIN', 'PREMIUM'], strategy: 'jwt' }, addProduct)
 
     this.put('/:pid', { policies: ['ADMIN'], strategy: 'jwt' }, updateProduct)
 

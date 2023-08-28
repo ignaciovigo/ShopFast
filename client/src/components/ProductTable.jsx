@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ProductTableRow from "./ProductTableRow";
 import FormAddProduct from "./FormAddProduct";
 import { FaPlus } from "react-icons/fa";
+import BtnAddProductsModal from "./BtnAddProductsModal";
 export default function ProductTable({
   getProducts,
   setSearch,
@@ -9,31 +10,10 @@ export default function ProductTable({
   isLoading,
   refreshProducts,
 }) {
-  const [toggleModal, setToggleModal] = useState(false);
-  const handleClick = () => {
-    setToggleModal(!toggleModal);
-  };
+  
   return (
     <div className='relative shadow-md sm:rounded-lg w-full flex flex-col gap-2'>
-      <button
-        className='bg-second hover:bg-yellow-500 black text-sm  py-2 px-4 rounded focus:outline-gray-500 flex gap-1 items-center justify-center focus:shadow-outline ff-third text-black w-fit'
-        type='button'
-        onClick={handleClick}
-      >
-      <FaPlus />Add new Product
-      </button>
-      {toggleModal && (
-        <div className='fixed inset-0 bg-black backdrop-blur-md bg-opacity-30 z-30 flex justify-center items-center w-full '>
-          <section className='flex justify-center items-center p-2 rounded-md w-full max-w-[800px] gap-3'>
-            <FormAddProduct
-              action='POST'
-              tittle='Add product'
-              refreshProducts={refreshProducts}
-              toggle={handleClick}
-            />
-          </section>
-        </div>
-      )}
+     <BtnAddProductsModal refreshProducts={refreshProducts}/>
       <div className="w-full overflow-x-auto scrollbar">
 
       
@@ -73,7 +53,6 @@ export default function ProductTable({
           ))}
         </tbody>
       </table>
-
       </div>
     </div>
   );

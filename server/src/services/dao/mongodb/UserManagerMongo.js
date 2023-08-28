@@ -11,10 +11,10 @@ export default class userManagerMongo {
     return userManagerMongo.#instance
   }
 
-  async getAll () {
-    const projection = 'firstName lastName fullName email age role githubId cartId lastActivity'
+  async getAll ({ limit = 10, page = 1, query = null }) {
     try {
-      const user = await userModel.find({}, projection)
+      const inputQuery = query ? { $or: [{ email: { $regex: '^' + query, $options: 'i' } }, { fullName: { $regex: query, $options: 'i' } }] } : {}
+      const user = await userModel.paginate({ ...inputQuery, email: { $ne: config.ADMIN_GMAIL_ACC } }, { page, limit, select: { password: 0 } }, { lean: true })
       return user
     } catch (error) {
       throw Error(error.message)
@@ -55,6 +55,7 @@ export default class userManagerMongo {
         { ...updates },
         { new: true }
       )
+      if (!userUpdated) throw Error('User not found')
       return userUpdated
     } catch (error) {
       throw Error(`Could not modify the user: ${error.message}`)

@@ -19,6 +19,7 @@ export const useTicketData = () => {
           });
           const result = await data.json();
           if (result.status === 'success') {
+            if(result.message) return 
             setTicketsData((prevState) => prevState.concat(result.payload.tickets));
             setHasNextPage(result.payload.hasNextPage);
           } else {

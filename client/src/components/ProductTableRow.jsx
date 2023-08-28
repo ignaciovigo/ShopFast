@@ -62,17 +62,17 @@ export default function ProductTableRow({
             <FaXmark className='text-red-300 w-10' />
           )}
         </td>
-        <td className='flex items-center px-6 py-4 space-x-3 justify-center'>
+        <td className='flex items-center  md:py-3 gap-1 justify-center'>
           <button
           type="button"
-            className='font-medium flex justify-center items-center bg-slate-500/50 hover:bg-slate-800 transition-colors duration-100 ease-in rounded-md px-1 text-blue-500'
+            className='font-medium flex justify-center py-1 items-center bg-slate-500/50 hover:bg-slate-800 transition-colors duration-100 ease-in rounded-md px-1 text-blue-500'
             data-btn='open'
             onClick={handleClick}
           >
             <FaEdit className="pointer-events-none"/>
             Edit
           </button>
-          <button type="button" onClick={handleRemove} className='font-medium text-red-600 dark:text-red-500 flex items-center justify-center hover:bg-slate-800 transition-colors duration-100 ease-in rounded-md px-1'>
+          <button type="button" onClick={handleRemove} className='font-medium py-1 text-red-600 dark:text-red-500 flex items-center justify-center hover:bg-slate-800 transition-colors duration-100 ease-in rounded-md px-1'>
             <FaTrash className="pointer-events-none"/>
             Remove
           </button>

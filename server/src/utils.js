@@ -20,18 +20,18 @@ const patterns = {
   age: /^(?!00)[0-9]{2}$/
 }
 
-function getLink (req, result) {
+function getLink (req, result, finalWordEndpoint) {
   let link = req.protocol + '://' + req.get('host') + req.originalUrl
-  const indexOfString = link.indexOf('products')
+  const indexOfString = link.indexOf(finalWordEndpoint)
   if (!link.includes('page')) {
     switch (link.substring(indexOfString)) {
-      case 'products':
+      case finalWordEndpoint:
         link += `?page=${result.page}`
         break
-      case 'products/':
-        link = link.replace('products/', `products?page=${result.page}`)
+      case `${finalWordEndpoint}/`:
+        link = link.replace(`${finalWordEndpoint}/`, `${finalWordEndpoint}?page=${result.page}`)
         break
-      case 'products?': default:
+      case `${finalWordEndpoint}?`: default:
         link += `&page=${result.page}`
         break
     }

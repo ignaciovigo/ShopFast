@@ -31,7 +31,7 @@ export default function useProducts({search}) {
     } finally{
       setIsLoading(false)
     }
-  }, []);
+  }, []); 
 
   useEffect(() => {
       getProducts({search});

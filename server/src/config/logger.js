@@ -18,9 +18,9 @@ const customLevelOptions = {
     fatal: 'red whiteBG',
     error: 'red',
     warning: 'yellow',
-    info: 'blue',
+    info: 'white blueBG',
     http: 'green',
-    debug: 'white'
+    debug: 'white greenBG'
   }
 
 }

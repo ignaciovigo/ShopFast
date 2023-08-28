@@ -12,7 +12,8 @@ export default function Purchase() {
   const [isLoading, setIsLoading] = useState(false);
   const [productsPurchased, setProductsPurchased] = useState([]);
   const { currentUser } = useAuth();
-  
+  const [deliveryAddress, setDeliveryAddress] = useState("");
+  const [creditCardNumber, setCreditCardNumber] = useState("");
   const handleClick = async () => {
     setIsLoading(true);
     const products = cart.map((e) => ({
@@ -21,6 +22,10 @@ export default function Purchase() {
     }));
     try {
       if (products.length === 0) return;
+      if(!deliveryAddress && !creditCardNumber){
+        toast.error('Must complete the fields required')
+        return
+      }
       const result = await fetch(
         CONSTANTS.CART_URL + `/${currentUser.cartId}`,
         {
@@ -39,6 +44,10 @@ export default function Purchase() {
           {
             method: "POST",
             credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({address: deliveryAddress, creditCard: creditCardNumber})
           }
         );
         const resultPurchase = await confirmPurchase.json();
@@ -81,7 +90,28 @@ export default function Purchase() {
         <h2 className='text-2xl font-bold mb-4 md:col-span-3 p-2 ff-third ps-4'>Purchase</h2>
         <CartContainer />
         <div className='bg-white rounded-lg shadow-md p-6'>
-          <section className='w-full flex flex-col justify-center items-center'>
+          <section className='w-full flex flex-col justify-center items-center gap-2'>
+          <div className="mt-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2">Delivery Address:</label>
+    <input
+      type="text"
+      value={deliveryAddress}
+      onChange={(e) => setDeliveryAddress(e.target.value)}
+      className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-gray-500 focus:shadow-outline"
+      placeholder="Enter your delivery address"
+      
+    />
+  </div>
+  <div className="mt-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2">Credit Card Number:</label>
+    <input
+      type="number"
+      value={creditCardNumber}
+      onChange={(e) => setCreditCardNumber(e.target.value)}
+      className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-gray-500 focus:shadow-outline"
+      placeholder="Enter your credit card number"
+    />
+  </div>
             <h1 className='text-2xl font-bold text-black ff-fourth'>
               Total Price ${totalPrice()}
             </h1>

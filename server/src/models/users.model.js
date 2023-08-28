@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { patterns } from '../utils.js'
+import mongoosePaginate from 'mongoose-paginate-v2'
 const collectionName = 'users'
 
 const userSchema = mongoose.Schema(
@@ -28,7 +29,7 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ['ADMIN', 'USER'],
+      enum: ['ADMIN', 'USER', 'PREMIUM'],
       default: 'USER'
     },
     githubId: String,
@@ -42,7 +43,7 @@ const userSchema = mongoose.Schema(
     }
   }
 )
-
+userSchema.plugin(mongoosePaginate)
 const userModel = mongoose.model(collectionName, userSchema)
 
 export default userModel
