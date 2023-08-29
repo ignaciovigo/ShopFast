@@ -18,14 +18,14 @@ El servidor cuenta con:
 - Endpoints documentados con Swagger para una fácil referencia y documentación. [ver aqui](https://shopfast-fxgq-dev.fl0.io/apidocs)
 
 # Notes
-> Dentro del directorio se shopFast se encuentran un archivo json que posee la configuracion de todos lo endpoints para probarlos desde postman
-> 
->Las variables de entorno utilizadas en el servidor se encuentran en [/shopFast/server/readme.md](https://github.com/ignaciovigo/ShopFast/tree/main/server/readme.md)
+> Dentro del directorio "shopFast" se encuentra un archivo JSON que contiene la configuración de todos los endpoints para probarlos desde Postman.
+
+>Las variables de entorno utilizadas en el servidor se encuentran en [/shopFast/server/readme.md](https://github.com/ignaciovigo/ShopFast/tree/main/server/readme.md).
 >
-> El frontend fue hecho con react y vite js, para correrlo en un entorno local copiar el package.json y los archivos necesarios para que el entorno de vite funcione ademas de la caperta src. Luego ejecutar el comando npm install.
+>El frontend fue desarrollado con React y Vite JS. Para ejecutarlo en un entorno local, copie el archivo "package.json" y los archivos necesarios para que el entorno de Vite funcione, además de la carpeta "src". Luego, ejecute el comando "npm install".
 >
-> Luego para correr la aplicacion del cliente ubicarse en el directorio client y ejecutar npm run dev.
+>Después, para ejecutar la aplicación del cliente, vaya al directorio "client" y ejecute "npm run dev".
 >
-> aclaracion: En el cliente en el archivo src/constants/constants.js se encuentra la url por la cual el cliente va a hacer las peticiones al dominio del servidor desplegado se puede modificar de acuerdo al entorno en el que se trabaje.
+>Aclaración: En el cliente, en el archivo "src/constants/constants.js", se encuentra la URL a la cual el cliente realizará las peticiones al dominio del servidor desplegado. Puede modificarse según el entorno en el que se trabaje.
 >
-> Por otro lado para correr el servidor ubicarse en el directorio server y ejectuar npm start.
+>Por otro lado, para ejecutar el servidor, vaya al directorio "server" y ejecute "npm start".
