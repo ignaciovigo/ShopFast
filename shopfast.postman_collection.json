@@ -1,0 +1,745 @@
+{
+	"info": {
+		"_postman_id": "5cf91d6f-cc76-45f9-a80c-a2c7a7e0448e",
+		"name": "shopfast",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "proyectDevelop",
+			"item": [
+				{
+					"name": "/api/products",
+					"item": [
+						{
+							"name": "/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkProducts}}?page=2",
+									"host": [
+										"{{mainLinkProducts}}"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2"
+										},
+										{
+											"key": "sort",
+											"value": "desc",
+											"description": "values as 'asc' or 'desc'",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:pid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkProducts}}/:pid",
+									"host": [
+										"{{mainLinkProducts}}"
+									],
+									"path": [
+										":pid"
+									],
+									"variable": [
+										{
+											"key": "pid",
+											"value": "64ee2fe98adb202b488b1c89"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Samsung J5\",\n    \"description\": \"A galactic map to explore the universe!\",\n    \"price\": 223,\n    \"thumbnails\": [],\n    \"code\": \"adsssdsssa\",\n    \"stock\": 324,\n    \"status\":false,\n    \"category\": \"Technology\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{mainLinkProducts}}",
+									"host": [
+										"{{mainLinkProducts}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:pid",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"title\": \"Licensds cats\",\n  \"price\": 250,\n  \"tola\": \"lomasp\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{mainLinkProducts}}/:pid",
+									"host": [
+										"{{mainLinkProducts}}"
+									],
+									"path": [
+										":pid"
+									],
+									"variable": [
+										{
+											"key": "pid",
+											"value": "64ee2fe98adb202b488b1c89"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:pid",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkProducts}}/:pid",
+									"host": [
+										"{{mainLinkProducts}}"
+									],
+									"path": [
+										":pid"
+									],
+									"variable": [
+										{
+											"key": "pid",
+											"value": "64ee2fe98adb202b488b1c89"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/api/carts",
+					"item": [
+						{
+							"name": "/",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkCarts}}",
+									"host": [
+										"{{mainLinkCarts}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:cid",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkCarts}}/:cid",
+									"host": [
+										"{{mainLinkCarts}}"
+									],
+									"path": [
+										":cid"
+									],
+									"variable": [
+										{
+											"key": "cid",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:cid",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"product\": \"64b892e58b695dccb5bef7ed\",\n        \"quantity\": 2\n    },\n    {\n        \"product\": \"64b88e2d20f66b89675c44cc\",\n        \"quantity\": 2\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{mainLinkCarts}}/:cid",
+									"host": [
+										"{{mainLinkCarts}}"
+									],
+									"path": [
+										":cid"
+									],
+									"variable": [
+										{
+											"key": "cid",
+											"value": "64b8ab52d0f6c3e904b1f6fc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:cid/product/:pid",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"quantity\": 30\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{mainLinkCarts}}/:cid/product/:pid",
+									"host": [
+										"{{mainLinkCarts}}"
+									],
+									"path": [
+										":cid",
+										"product",
+										":pid"
+									],
+									"variable": [
+										{
+											"key": "cid",
+											"value": "64b8ab52d0f6c3e904b1f6fc"
+										},
+										{
+											"key": "pid",
+											"value": "64b892e58b695dccb5bef7ed"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:cid",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkCarts}}/:cid",
+									"host": [
+										"{{mainLinkCarts}}"
+									],
+									"path": [
+										":cid"
+									],
+									"variable": [
+										{
+											"key": "cid",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:cid/product/:pid",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkCarts}}/:cid/product/:pid",
+									"host": [
+										"{{mainLinkCarts}}"
+									],
+									"path": [
+										":cid",
+										"product",
+										":pid"
+									],
+									"variable": [
+										{
+											"key": "cid",
+											"value": ""
+										},
+										{
+											"key": "pid",
+											"value": ""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:cid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkCarts}}/:cid",
+									"host": [
+										"{{mainLinkCarts}}"
+									],
+									"path": [
+										":cid"
+									],
+									"variable": [
+										{
+											"key": "cid",
+											"value": "64b8ab52d0f6c3e904b1f6fcs"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:cid/purchase",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{mainLinkCarts}}/:cid/purchase",
+									"host": [
+										"{{mainLinkCarts}}"
+									],
+									"path": [
+										":cid",
+										"purchase"
+									],
+									"variable": [
+										{
+											"key": "cid",
+											"value": "6488fa82101b63e7f39d3ff1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/api/users",
+					"item": [
+						{
+							"name": "/register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"asdasd\",\n    \"lastName\": \"asdsad\",\n    \"age\": 16,\n    \"email\": \"franssgssk@examdpsle.com\",\n    \"password\": \"123123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/users/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/data",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{mainLink}}/api/users/data",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"data"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/tickets",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{mainLink}}/api/users/tickets?page=1",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"tickets"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/test/user",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{mainLink}}/api/test/user",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"test",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{mainLink}}/api/users?page=1",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{mainLink}}/api/users",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/:uid",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{mainLink}}/api/users/:uid",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"users",
+										":uid"
+									],
+									"variable": [
+										{
+											"key": "uid",
+											"value": "64e523143fb7ccdde7e762fa"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"fran@example.com\",\n    \"update\": {\n        \"role\": \"USER\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{mainLink}}/api/users/role",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"users",
+										"role"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/api/jwt",
+					"item": [
+						{
+							"name": "/login",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"admin@coder.com\",\n    \"password\": \"123123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{mainLink}}/api/jwt/login",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"jwt",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/github",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "/githubcallback",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "/logout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{mainLink}}/api/jwt/logout",
+									"host": [
+										"{{mainLink}}"
+									],
+									"path": [
+										"api",
+										"jwt",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "mockingproducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mainLink}}/mockingproducts",
+							"host": [
+								"{{mainLink}}"
+							],
+							"path": [
+								"mockingproducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/logger",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mainLink}}/loggerTest",
+							"host": [
+								"{{mainLink}}"
+							],
+							"path": [
+								"loggerTest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/logger dev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/loggerTest",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"loggerTest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/easyopeartion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mainLink}}/easyoperation",
+							"host": [
+								"{{mainLink}}"
+							],
+							"path": [
+								"easyoperation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/hardoperation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mainLink}}/hardoperation",
+							"host": [
+								"{{mainLink}}"
+							],
+							"path": [
+								"hardoperation"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "mainLink",
+			"value": "https://shopfast-fxgq-dev.fl0.io",
+			"type": "default"
+		},
+		{
+			"key": "mainLinkProducts",
+			"value": "https://shopfast-fxgq-dev.fl0.io/api/products",
+			"type": "default"
+		},
+		{
+			"key": "mainLinkCarts",
+			"value": "https://shopfast-fxgq-dev.fl0.io/api/carts",
+			"type": "default"
+		}
+	]
+}
