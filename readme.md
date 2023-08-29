@@ -12,9 +12,9 @@ El servidor cuenta con:
 - Sistema de inicio de sesión utilizando JSON Web Tokens junto con la librería Passport-JWT mediante el establecimiento de cookies entre peticiones.
 - Pruebas de estrés, pruebas unitarias y de integración con mocha y chai.
 - Sistema de logger con la libreria winston. 
-- El servidor está desplegado en [shopfast-fxgq-dev.fl0.io](shopfast-fxgq-dev.fl0.io)
+- El servidor está desplegado en [shopfast-fxgq-dev.fl0.io](https://shopfast-fxgq-dev.fl0.io)
 - Mockeo de datos utilizando la libreria fakerjs
-- Endpoints documentados con Swagger para una fácil referencia y documentación. [ver aqui](shopfast-fxgq-dev.fl0.io/apidocs)
+- Endpoints documentados con Swagger para una fácil referencia y documentación. [ver aqui](https://shopfast-fxgq-dev.fl0.io/apidocs)
 
 # Notes
 > Dentro del directorio se shopFast se encuentran un archivo json que posee la configuracion de todos lo endpoints para probarlos desde postman
