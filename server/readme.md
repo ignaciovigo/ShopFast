@@ -1,11 +1,3 @@
-# Notes
-> El frontend fue hecho con react y vite js, para correrlo copiar el package.json y los archivos necesarios para que el entorno de vite funcione ademas de la caperta src. Luego ejecutar el comando npm install.
-
-> Para correr la aplicacion del cliente ubicarse en el directorio client y ejecutar npm run dev.
-
-> aclaracion: En el cliente en el archivo src/constants/constants.js se encuentra la url por la cual el cliente va a hacer las peticiones al servidor se puede modificar de acuerdo al entorno en el que se trabaje.
-
-> Por otro lado para correr el servidor ubicarse en el directorio server y ejectuar npm start.
 # Env variables utilizadas en el server
 - MONGO_URL = mongodb://localhost:27017/entrega?retryWrites=true&w=majority
 - CLIENT_ID_GITHUB = Id para el cliente de github
