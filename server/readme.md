@@ -3,6 +3,8 @@
 
 > Para correr la aplicacion del cliente ubicarse en el directorio client y ejecutar npm run dev.
 
+> aclaracion: En el cliente en el archivo src/constants/constants.js se encuentra la url por la cual el cliente va a hacer las peticiones al servidor se puede modificar de acuerdo al entorno en el que se trabaje.
+
 > Por otro lado para correr el servidor ubicarse en el directorio server y ejectuar npm start.
 # Env variables utilizadas en el server
 - MONGO_URL = mongodb://localhost:27017/entrega?retryWrites=true&w=majority
