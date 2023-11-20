@@ -1,4 +1,4 @@
-const URL ='https://shopfast-fxgq-dev.fl0.io'
+const URL ='https://shopfastback-dev-hgqh.4.us-1.fl0.io'
 const CONSTANTS = {
     LOGIN_URL : `${URL}/api/jwt/login`,
     REGISTER_URL: `${URL}/api/users/register`,
