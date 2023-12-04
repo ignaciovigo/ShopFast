@@ -12,7 +12,7 @@ El servidor cuenta con:
 - Sistema de inicio de sesión utilizando JSON Web Tokens junto con la librería Passport-JWT mediante el establecimiento de cookies entre peticiones.
 - Pruebas de estrés, pruebas unitarias y de integración con mocha y chai.
 - Sistema de logger con la libreria winston. 
-- El servidor está desplegado en [https://shopfastback-dev-hgqh.4.us-1.fl0.io](https://shopfastback-dev-hgqh.4.us-1.fl0.io)
+- El servidor está desplegado en fl0.com, puede ver su documentacion hecho con swagger [ver aquí](https://shopfastback-dev-hgqh.4.us-1.fl0.io/apidocs)
 - La aplicacion frontend se encuentra desplegada en [https://shop-fast.vercel.app/](https://shop-fast.vercel.app/)
 - Mockeo de datos utilizando la libreria fakerjs
 - Endpoints documentados con Swagger para una fácil referencia y documentación. [ver aqui](https://shopfast-fxgq-dev.fl0.io/apidocs)
