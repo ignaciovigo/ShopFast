@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Loader from "./Loader";
 import { useRef, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
-
+import CONSTANTS from "../constants/constants";
 export default function Login() {
   const [data, setData] = useState({email: '', password: ''})
   const { login } = useAuth()
@@ -29,6 +29,12 @@ export default function Login() {
     }
 
   }
+  
+    const handleLogin = () => {
+      // Redirigir al servidor para iniciar sesión con GitHub
+      window.location.href = CONSTANTS.GITHUB_LOGIN_URL;
+    };
+    
   return (
     <section className='grid grid-cols-1 gap-5 md:grid-cols-2 h-full bg-gray-300 bg-thing py-2 sm:py-10 md:px-5 sm:px-10 lg:px-20 xl:px-32 overflow-auto'>
   {/* section container */}
@@ -51,12 +57,12 @@ export default function Login() {
         <span className='font-medium text-sm text-gray-400 text-center'>
           Your social Campaigns
         </span>
-        <a
-          href=''
+        <button
+          onClick={handleLogin}
           className='py-1 px-2 border border-gray-500 text-gray-500 rounded-full w-fit text-center line-clamp-2 hover:border-gray-700 hover:text-gray-600 transition-colors duration-300 ease-in-out'
         >
           Sign in with GitHub
-        </a>
+        </button>
         <span className='font-medium text-xs text-gray-400 text-center sm:my-5'>
           or with email
         </span>
