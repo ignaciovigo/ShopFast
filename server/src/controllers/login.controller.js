@@ -25,7 +25,9 @@ export async function loginUser (req, res) {
     res
       .cookie('jwtCookie', accessToken, {
         maxAge: 3600000,
-        httpOnly: true
+        httpOnly: true,
+        secure: true,
+        sameSite: 'None'
       })
       .sendSuccessInfo('Login successfully')
   } catch (error) {
@@ -36,7 +38,11 @@ export async function loginUser (req, res) {
 
 export async function logoutUser (req, res) {
   try {
-    res.clearCookie('jwtCookie').sendSuccess('The session has been closed')
+    res.clearCookie('jwtCookie', {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'None'
+    }).sendSuccess('The session has been closed')
   } catch (error) {
     res.sendServerError(error.message)
   }
