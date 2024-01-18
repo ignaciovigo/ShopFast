@@ -30,11 +30,6 @@ export default function Login() {
 
   }
   
-    const handleLogin = () => {
-      // Redirigir al servidor para iniciar sesión con GitHub
-      window.location.href = CONSTANTS.GITHUB_LOGIN_URL;
-    };
-    
   return (
     <section className='grid grid-cols-1 gap-5 md:grid-cols-2 h-full bg-gray-300 bg-thing py-2 sm:py-10 md:px-5 sm:px-10 lg:px-20 xl:px-32 overflow-auto'>
   {/* section container */}
@@ -50,19 +45,18 @@ export default function Login() {
       onSubmit={handleSubmit}
       className='bg-slate-50 p-4 sm:p-6 rounded-lg flex flex-col justify-around items-center sm:min-h-[200px] md:min-h-[300px] lg:min-h-[400px]'
     >
-      {/* formulario container */}
       <div className='flex flex-col max-h-fit gap-5 items-center'>
         {/* primera row */}
         <h1 className='text-md text-2xl font-bold text-center'>Sign in</h1>
         <span className='font-medium text-sm text-gray-400 text-center'>
           Your social Campaigns
         </span>
-        <button
-          onClick={handleLogin}
+        <a
+          href={`${CONSTANTS.GITHUB_LOGIN_URL}`}
           className='py-1 px-2 border border-gray-500 text-gray-500 rounded-full w-fit text-center line-clamp-2 hover:border-gray-700 hover:text-gray-600 transition-colors duration-300 ease-in-out'
         >
           Sign in with GitHub
-        </button>
+        </a>
         <span className='font-medium text-xs text-gray-400 text-center sm:my-5'>
           or with email
         </span>
