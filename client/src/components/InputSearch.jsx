@@ -1,4 +1,4 @@
-import { AiOutlineSearch } from "react-icons/ai";
+import { BiSearchAlt } from "react-icons/bi";
 import debounce from 'just-debounce-it'
 import { useCallback } from "react";
 
@@ -16,9 +16,9 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
     debounceProducts(newSearch)
   };
   return (
-    <article className='flex rounded-lg bg-neutral-800 p-1 w-full'>
+    <article className='flex rounded-lg bg-[--input] p-1 w-full max-w-xl min-w-sm'>
       <label htmlFor='searchText' className="flex justify-center items-center ps-2">
-        <AiOutlineSearch className='text-second w-8 h-8' />
+        <BiSearchAlt className='text-[--primary-100] w-8 h-8' />
       </label>
       <input
         type='text'
@@ -26,7 +26,7 @@ export default function InputSearch({ getProductsBySearch, search, setSearch, is
         onChange={handleChange}
         id='searchText'
         placeholder={placeholder}
-        className='bg-transparent text-second outline-none rounded-sm h-8 w-full'
+        className='bg-transparent text-[--text-100] placeholder:text-sm outline-none rounded-sm h-8 w-full'
       />
     </article>
   );

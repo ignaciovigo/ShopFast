@@ -3,33 +3,50 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import SidebarData from "./sidebarData";
 import { IconContext } from "react-icons/lib";
+import { useLocation } from "react-router-dom";
+import { BiLogOut } from "react-icons/bi";
 
 export default function SideBar() {
-  const { currentUser } = useAuth();  
+  const { currentUser, logout } = useAuth();  
+  const {pathname} = useLocation()
   return (
-    <aside
-      className={`w-[85px] group/item hover:md:w-[250px] h-full bg-[#111111] transition-all duration-300 ease-in-out text-white z-20`}
-    >
-      <nav className='overflow-hidden flex flex-col justify-start items-center w-full px-1 py-2 h-full gap-2'>
-        <div className=' ff-second font-bold text-md my-2 text-center '>Shop Fast</div>
-        <div className="flex flex-col justify-center items-center transition-all duration-300 ease-in w-full gap-0.5">
-        <IconContext.Provider value={{ className: "text-second h-[2rem] w-[2rem]" }}>
+    
+    <div className="flex h-full flex-col px-3 py-4 md:px-2">
+      <Link
+        className="mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 md:h-40"
+        to="/"
+      >
+        <div className="w-32 text-white md:w-40">
+          ShopFast
+        </div>
+      </Link>
+      <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
+      <IconContext.Provider value={{ className: "text-[--primary-100] h-[2rem] w-[2rem]" }}>
           {SidebarData.map((data, key) => {
             if (data.role.includes(currentUser.role)) {
               return (
-                <Link to={data.path} className="customLinks items-center justify-start flex w-full relative" key={key}>
-                  <span className="w-full ps-2.5">
+                <Link
+            key={key}
+            to={data.path}
+            className={`flex h-[48px] ff-fourth grow items-center border border-[--border] text-[--text-100] justify-center gap-3 rounded-md bg-[--bg-200] p-3 text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] md:flex-none md:justify-start md:p-2 md:px-3
+             ${pathname === data.path ? 'bg-[--bg-400] text-[--text-200]': ''}`}
+          >
+            <span className="w-6">
                   {data.icon}
                   </span>
-                  <span className={`absolute top-2.5 left-16 whitespace-nowrap transition-opacity duration-200 ease-in opacity-0 group-hover/item:md:opacity-100`}>{data.title}</span>
-                </Link>
+            <p className="hidden md:block">{data.title}</p>
+          </Link>
               );
             }
           })}
         </IconContext.Provider>
-        </div>
-      </nav>
-    </aside>
+        <div className="hidden h-auto w-full grow rounded-md bg-[--bg-200] md:block border border-[--border]"></div>
+        <Link onClick={() => logout()} className='flex h-[48px] ff-fourth grow items-center border border-[--border] text-[--text-100] justify-center gap-3 rounded-md bg-[--bg-200] p-3 text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] md:flex-none md:justify-start md:p-2 md:px-3'>
+            <BiLogOut className='text-[--primary-100] w-6 h-6'/>            
+              <p className="hidden md:block">Sign Out</p>
+            </Link>
+      </div>
+    </div>
 
   );
 }

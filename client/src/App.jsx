@@ -25,6 +25,8 @@ function App() {
         className: 'ff-second semibold' ,
         success: {
           className:'bg-green-200',
+          position:'top-right',
+          duration: 800
           },
           error: {
             className:'bg-red-200',

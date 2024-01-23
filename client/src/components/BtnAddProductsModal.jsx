@@ -10,11 +10,14 @@ export default function BtnAddProductsModal({refreshProducts}) {
     return (
         <>
         <button
-          className='bg-second hover:bg-yellow-500 black text-sm  py-2 px-4 rounded focus:outline-gray-500 flex gap-1 items-center justify-center focus:shadow-outline ff-third text-black w-fit'
+          className='ff-fourth items-center border h-10 flex border-[--border]  hover:ring-2 hover:ring-[--primary-100] text-[--text-100] gap-3 rounded-md bg-[--bg-200] text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] flex-none justify-start p-2 px-3 transition-all ease-in 300s'
           type='button'
           onClick={handleClick}
           >
-        <FaPlus />Add new Product
+        <FaPlus className='text-[--primary-100]' />
+        <span className='text-[--text-100] text-sm'>
+        Add Product
+        </span>
         </button>
         {toggleModal && (
           <div className='fixed inset-0 bg-black backdrop-blur-md bg-opacity-30 z-30 flex justify-center items-center w-full '>

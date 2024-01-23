@@ -50,7 +50,7 @@ export default function ItemProduct({ product, role }) {
   return (
     <div
       key={id}
-      className='bg-white rounded-lg shadow-md p-4 flex flex-col gap-1 justify-center items-stretch'
+      className='bg-[--bg-200] border border-[--border] rounded-lg shadow-md p-4 flex flex-col gap-1 justify-center items-stretch'
     >
       <div className='grid grid-cols-3 gap-2 col-span-2'>
         {thumbnails.map((thumbnail, index) => (
@@ -58,23 +58,23 @@ export default function ItemProduct({ product, role }) {
             key={index}
             src={thumbnail}
             alt={`Product img ${index + 1}`}
-            className='w-full h-auto rounded text-sm hover:scale-[1.1] cursor-pointer duration-100'
+            className='w-full h-auto rounded text-xs text-[--text-100] hover:scale-[1.1] cursor-pointer duration-100'
             onClick={handleClickImage}
           />
         ))}
       </div>
       <div className='flex'>
         <div className='flex flex-col w-full'>
-          <h2 className='text-md ff-fourth font-semibold'>{title}</h2>
+          <h2 className='text-lg text-[--text-100] tracking-wide ff-fourth font-semibold text-balance'>{title}</h2>
           <div className='flex justify-between'>
-            <p className='text-gray-500 text-sm mt-auto ff-fourth'>
+            <p className='text-[--text-400] text-sm mt-auto ff-fourth'>
               Stock: {stock}
             </p>
-            <p className='text-gray-500 text-sm ff-fourth'>{category}</p>
+            <p className='text-[--text-400] text-sm ff-fourth'>{category}</p>
           </div>
         </div>
       </div>
-      <p className='text-gray-700 leading-tight break-words text-sm overflow-y-auto max-h-16 ff-third scrollbar font-bold'>
+      <p className='text-[--text-400] leading-none break-words text-sm overflow-y-auto h-full ff-third scrollbar font-bold'>
         {description}
       </p>
 
@@ -85,7 +85,7 @@ export default function ItemProduct({ product, role }) {
         >
           -
         </button>
-        <span className='px-3 py-1 text-sm font-medium'>{quantity}</span>
+        <span className='px-3 py-1 text-md font-bold ff-third text-[--text-100]'>{quantity}</span>
         <button
           onClick={increaseQuantity}
           className='px-3 py-1 text-sm text-gray-500 hover:text-green-700 bg-green-200 hover:bg-green-300 rounded-r active:scale-[0.9] duration-100'
@@ -94,17 +94,16 @@ export default function ItemProduct({ product, role }) {
         </button>
       </div>
       <button
-        className='bg-second text-[#111111] rounded px-4 py-1 hover:bg-yellow-500 ff-third text-md active:scale-[0.9] duration-100 flex justify-evenly'
+        className='ff-fourth items-center border h-10 flex border-[--border]  hover:ring-1 hover:ring-[--primary-100] text-[--text-100] gap-3 rounded-md bg-[--bg-100] text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] flex-none justify-evenly p-2 px-3 transition-all ease-in 300s'
         onClick={handleAddToCart}
       >
-        <p className='text-gray-800 text-xl ff-fourth font-bold self-center'>
+        <p className='text-xl ff-fourth font-bold self-center text-[--text-100]'>
           {" "}
-          <span className='align-middle text-sm'>$</span>
+          <span className='align-middle text-sm text-[--primary-100]'>$</span>
           {price}
         </p>
         Add to Cart
       </button>
-
       {urlImage?.url && (
         <div className='fixed inset-0 bg-black backdrop-blur-md bg-opacity-30 z-30 flex justify-center items-center w-full '>
           <section className='flex justify-center items-center p-2 rounded-md overflow-hidden w-full max-w-[800px] gap-3'>
@@ -123,3 +122,4 @@ export default function ItemProduct({ product, role }) {
     </div>
   );
 }
+

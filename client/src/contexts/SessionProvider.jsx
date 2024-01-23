@@ -14,21 +14,18 @@ export default function SessionProvider({ children }) {
   const getUserData = async () => {
     try {
       setIsLoading(true)
-      if (!isAuthenticated) {
+     
         const user = await fetch(CONSTANTS.USER_URL, {
           method: "GET",
           credentials: "include",
         });
         const userData = await user.json();
         if (userData?.status === "error") throw userData;
+
         setCurrentUser({ ...userData.payload });
         setIsAuthenticated(true);
-      } else {
-        return;
-      }
     } catch (error) {
       setIsAuthenticated(false);
-      console.error(error);
     } finally {
       setIsLoading(false)
     }
@@ -57,7 +54,6 @@ export default function SessionProvider({ children }) {
 
   const logout = async () => {
     try {
-      if (!isAuthenticated) return;
       const resp = await fetch(CONSTANTS.LOGOUT_URL, {
         method: "GET",
         credentials: "include",

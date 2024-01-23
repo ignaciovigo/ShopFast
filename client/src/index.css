@@ -4,6 +4,37 @@
 @tailwind components;
 @tailwind utilities;
 
+
+  :root {
+/*     --primary-100:#FF5733;
+    --primary-200:#ff8a5f;
+    --primary-300:#fff3bf;
+    --accent-100:#FFC300;
+    --accent-200:#916600;
+    --text-100:#FFFFFF;
+    --text-200:#c0c0c0;
+    --bg-100:#1C1C1C;
+    --bg-200:#2b2b2b;
+    --bg-300:#434343;
+ */    
+    --bg-100: #0c0a09;
+    --text-100: #F2F2F2;
+    --bg-200: #1C1917;
+    --bg-300: #171717;
+    --primary-100: #e11d48;
+    --text-200: #fff1f2;
+    --bg-400: #27272a;
+    --text-300: #fafafa;
+    --bg-500: #262626;
+    --text-400: #a1a1aa;
+    --accent: #292524;
+    --accent-foreground: #fafafa;
+    --primary-200: #7f1d1d;
+    --destructive-foreground: #fef2f2;
+    --border: #27272a;
+    --input: #27272a;
+}
+
 html,
 body,
 body > div {
@@ -160,4 +191,16 @@ body > div {
 
 .dropdown_link {
   @apply text-sm text-gray-700 hover:text-gray-500 font-medium
+}
+.bg-shine-animate {
+  animation: bg-shine 2s linear infinite;
+}
+
+@keyframes bg-shine {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: "-200% 0";
+  }
 }

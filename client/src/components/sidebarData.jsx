@@ -1,33 +1,38 @@
-import React from "react";
-import {FaHome, FaListUl,FaUserAlt, FaMicrosoft,FaClipboardList } from "react-icons/fa";
-import { HiInbox, HiShoppingBag, HiShoppingCart, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import {AiOutlineSearch, AiOutlineUser} from 'react-icons/ai'
-import {FiLogOut} from 'react-icons/fi'
+import { BiStoreAlt, BiHistory, BiCustomize, BiCartAlt, BiUser } from "react-icons/bi";
+import { MdOutlinePayment } from "react-icons/md";
+
+
 const SidebarData = [
   {
     title: "Products",
     path: '/products',
-    icon: <HiShoppingBag />,
+    icon: <BiStoreAlt />,
     role: ['USER','ADMIN', 'PREMIUM']
   },
   {
     title: "History",
     path: "/history",
-    icon: <FaClipboardList />,
+    icon: <BiHistory />,
     role: ['USER', 'PREMIUM']
   },
   {
     title: "Users",
     path: "/usermanagement",
-    icon: <FaMicrosoft />,
+    icon: <BiCustomize />,
     role: ['ADMIN'],
   },
   {
-    title: "Cart",
+    title: "Payment",
     path: "/cart",
-    icon: <HiShoppingCart />,
+    icon: <MdOutlinePayment />,
     role: ['USER', 'PREMIUM']
   },
+  {
+    title: "Profile",
+    path: "/profile",
+    icon: <BiUser />,
+    role: ['USER', 'PREMIUM','ADMIN']
+  }
 ];
 
 export default SidebarData;

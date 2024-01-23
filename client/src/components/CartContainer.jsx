@@ -1,29 +1,30 @@
 import React from "react";
 import useCart from "../hooks/useCart";
-import { HiTrash, HiX } from "react-icons/hi";
+import { BiTrash, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
 export default function CartContainer({ showButtonPay }) {
   const { cart, totalPrice, clearCart, removeToCart } = useCart();
 
   return (
-    <div className='p-4'>
+    <div className='p-4 flex flex-col'>
       <div className='flex justify-between items-end mb-1'>
-        <h2 className='text-2xl font-bold ff-third'>Your Cart</h2>
+        <h2 className='text-2xl font-normal ff-fourth text-[--text-100]'>Your Cart</h2>
+        
         <span
-          className={`${cart.length === 0 ? 'hidden' :''} p-2 bg-second flex justify-center items-center text-black rounded-md cursor-pointer`}
+          className={`${cart.length === 0 ? 'hidden' :''} p-1 bg-[--bg-100] border border-[--border] hover:bg-[--bg-400]  hover:ring-1 hover:ring-[--primary-100] transition-all ease-in 300 flex justify-center items-center text-black rounded-md cursor-pointer`}
           onClick={() => clearCart()}
         >
-          <HiTrash className='pointer-events-none h-6 w-6' />
+          <BiTrash className='pointer-events-none h-6 w-6 text-[--primary-100]' />
         </span>
       </div>
       {cart.length > 0 ? (
         <>
-          <div className='bg-white rounded-lg shadow-md  max-h-[70vh] overflow-y-auto'>
-            <ul className='divide-y divide-gray-200'>
+          <div className='border border-[--border] rounded-lg shadow-md  max-h-[70vh] overflow-y-auto'>
+            <ul className='divide-y divide-[--border]'>
               {cart.map((e) => {
                 return (
                   <li
-                    className='flex items-center py-2 px-2 bg-[#111111]'
+                    className='flex items-center p-2 bg-[--bg-100]'
                     key={e.product.id + "3"}
                   >
                     <img
@@ -31,49 +32,47 @@ export default function CartContainer({ showButtonPay }) {
                       alt={`image product ${e.product.title}`}
                       className='w-16 h-16 mr-4 rounded'
                     />
-                    <div className="w-full">
-                      <h3 className='text-lg font-bold text-second ff-third'>
+                    <div className="w-full flex flex-col items-start justify-center gap-1 ff-second">
+                      <h3 className='text-lg font-semibold leading-none text-[--text-100]'>
                         {e.product.title}
-                      </h3>
-                      <p className='text-gray-200 text-sm ff-fourth line-clamp-1'>
-                        {e.product.description}
-                      </p>
-                      <div className="flex justify-start items-center">
-                      <p className='text-gray-500 text-md flex gap-1 ff-fourth mr-2'>
-                        Price:
-                        <span className='text-second'>${e.product.price}</span>
-                      </p>
-                      <p className='text-gray-500 text-sm flex gap-1 ff-fourth'>
+                      </h3>            
+                      <div className="flex justify-start w-full h-full items-center gap-4">
+                      <p className='text-[--text-400] flex gap-1 ff-fourth'>
                         Quantity:
-                        <span className='text-gray-200 font-semibold'>{e.quantity}</span>
+                        <span className='text-[--text-100] font-bold'>{e.quantity}</span>
+                      </p>
+                      <p className='text-[--text-400] flex gap-1'>
+                        Price:
+                        <span className='text-[--text-100] font-bold '><span className="text-[--primary-100] text-sm">$</span>{e.product.price}</span>
                       </p>
                       
                       </div>
                     </div>
+                    <p className="text-[--text-100] mt-auto mb-2"><span className="text-[--primary-100] text-sm">$</span>{(e.quantity * e.product.price).toFixed(2)}</p>
                     <span
-                      className='p-2 bg-second  text-black rounded-md cursor-pointer active:scale-90 duration-100'
+                      className='p-1 bg-[--bg-100] hover:bg-[--bg-400] border border-[--border] rounded-md cursor-pointer active:scale-90 duration-100 mb-auto'
                       onClick={() => removeToCart(e)}
                     >
-                      <HiX className='pointer-events-none h-6 w-6' />
+                      <BiX className='pointer-events-none h-6 w-6 text-[--primary-100]' />
                     </span>
                   </li>
                 );
               })}
             </ul>
           </div>
-          <div className='mt-4 flex justify-between'>
+          <div className='mt-4 flex justify-between items-end flex-col gap-2'>
             {showButtonPay && (
               <>
-                <p className='text-lg text-gray-600 flex gap-2 ff-fourth'>
+                <p className='text-lg text-[--text-400] flex gap-2 ff-fourth'>
                   Total Price:
-                  <span className='text-black text-lg font-semibold'>$ {totalPrice()}</span>
+                  <span className='text-[--text-100] text-lg font-semibold'><span className="text-[--primary-100] text-sm">$</span>{totalPrice()}</span>
                 </p>
                 <Link
                   to={"/cart"}
                   data-btn='close'
-                  className='px-4 py-2 text-sm font-medium text-black bg-second hover:bg-yellow-500 rounded ff-fourth active:scale-90 duration-100'
+                  className='flex ff-fourth h-10 items-center transition-all 3s ease-in border border-[--border] text-[--text-100] gap-3 rounded-md bg-[--bg-100] text-sm font-medium hover:bg-[--bg-500] hover:text-[--text-300] flex-none justify-start p-2 px-3 hover:ring-2 hover:ring-[--primary-100]'
                 >
-                  Pay now
+                  Go to payment
                 </Link>
               </>
             )}
@@ -81,7 +80,7 @@ export default function CartContainer({ showButtonPay }) {
         </>
       ) : (
         <div className="flex justify-center items-center h-48">
-        <h1 className='text-gray-500 text-3xl ff-second text-center ff-third'>
+        <h1 className='text-[--text-400] text-3xl ff-third text-center'>
           Not products
         </h1>
         </div>

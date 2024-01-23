@@ -3,6 +3,7 @@ import Loader from "./Loader";
 import { useRef, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import CONSTANTS from "../constants/constants";
+import toast from "react-hot-toast";
 export default function Login() {
   const [data, setData] = useState({email: '', password: ''})
   const { login } = useAuth()
