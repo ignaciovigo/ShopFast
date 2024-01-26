@@ -55,7 +55,7 @@ export default function Register() {
       <div className='flex items-center justify-center w-full'>
         {/* first col container */}
         <img
-          src='../../public/logoShopFast.png'
+          src='../assets/logoShopFast.png'
           alt='ShopFast logo'
           className='rounded-lg bourder border-[--border] w-auto max-w-[500px] min-w-[200px]'
         />
