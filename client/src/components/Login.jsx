@@ -39,7 +39,7 @@ export default function Login() {
       <div className='flex items-center justify-center w-full'>
         {/* primera col container */}
         <img
-          src={`/assets/logoShopFast.png`}
+          src={`./public/logoShopFast.png`}
           alt='ShopFast logo'
           className='rounded-lg bourder border-[--border] w-auto max-w-[500px] min-w-[200px]'
         />
