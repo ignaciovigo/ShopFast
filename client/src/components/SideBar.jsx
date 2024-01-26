@@ -5,6 +5,7 @@ import SidebarData from "./sidebarData";
 import { IconContext } from "react-icons/lib";
 import { useLocation } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
+import logoImage from '../../public/logoShopFast.png'
 
 export default function SideBar() {
   const { currentUser, logout } = useAuth();  
@@ -16,7 +17,7 @@ export default function SideBar() {
         className="mb-2 flex h-20 items-center md:justify-center rounded-md bg-[--bg-500] p-4 md:h-40 group/logo"
         to="/products"
       >
-       <img src="./public/logoShopFast.png" alt="ShopFast Logo"  className="w-[200px] h-auto group-hover/logo:scale-105 transition-all duration-200"/>
+       <img src={logoImage} alt="ShopFast Logo"  className="w-[200px] h-auto group-hover/logo:scale-105 transition-all duration-200"/>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
       <IconContext.Provider value={{ className: "text-[--primary-100] h-[2rem] w-[2rem]" }}>

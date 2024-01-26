@@ -3,7 +3,7 @@ import CONSTANTS from "../constants/constants";
 import { Link, useNavigate } from "react-router-dom";
 import Loader from "./Loader";
 import { toast } from "react-hot-toast";
-
+import logoImage from '../../public/logoShopFast.png'
 export default function Register() {
   const [data, setData] = useState({
     firstName: "",
@@ -55,7 +55,7 @@ export default function Register() {
       <div className='flex items-center justify-center w-full'>
         {/* first col container */}
         <img
-          src='./public/logoShopFast.png'
+          src={logoImage}
           alt='ShopFast logo'
           className='rounded-lg bourder border-[--border] w-auto max-w-[500px] min-w-[200px]'
         />

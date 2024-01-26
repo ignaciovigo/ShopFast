@@ -3,6 +3,8 @@ import Loader from "./Loader";
 import { useRef, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import CONSTANTS from "../constants/constants";
+import logoImage from '../../public/logoShopFast.png'
+
 export default function Login() {
   const [data, setData] = useState({ email: "", password: "" });
   const { login } = useAuth();
@@ -39,7 +41,7 @@ export default function Login() {
       <div className='flex items-center justify-center w-full'>
         {/* primera col container */}
         <img
-          src={`./public/logoShopFast.png`}
+          src={logoImage}
           alt='ShopFast logo'
           className='rounded-lg bourder border-[--border] w-auto max-w-[500px] min-w-[200px]'
         />
