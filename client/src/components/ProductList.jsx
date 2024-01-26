@@ -1,6 +1,4 @@
-import React from "react";
 import ItemProduct from "./ItemProduct";
-import { useAuth } from "../hooks/useAuth";
 
 export default function ProductList({ products,refreshProducts,role  }) {
   

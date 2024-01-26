@@ -63,3 +63,23 @@ export async function updateUserRole({ email, update }) {
     throw {...error}
   }
 }
+
+
+export async function fetchTickets({pageParam}){
+  try {
+    const queryPage = `?page=${pageParam}`;
+    const data = await fetch(CONSTANTS.USER_TICKETS_URL + queryPage, {
+      method: 'GET',
+      credentials: 'include',
+    });
+    const result = await data.json();
+    if (result.status === 'success') {
+      if(result.payload) return result.payload
+      throw result
+    } else{
+      throw new Error(result.message)
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}

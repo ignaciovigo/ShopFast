@@ -1,67 +1,19 @@
-import { useEffect, useState } from "react";
-import CONSTANTS from "../constants/constants";
+import { fetchTickets } from "../../services/callsApi";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useAuth } from "./useAuth";
 
 export const useTicketData = () => {
-    const [ticketsData, setTicketsData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [hasNextPage, setHasNextPage] = useState(null);
-    const [error, setError] = useState(null);
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        setIsLoading(true);
-        try {
-          const queryPage = `?page=${currentPage}`;
-          const data = await fetch(CONSTANTS.USER_TICKETS_URL + queryPage, {
-            method: 'GET',
-            credentials: 'include',
-          });
-          const result = await data.json();
-          if (result.status === 'success') {
-            if(result.message) return 
-            setTicketsData((prevState) => prevState.concat(result.payload.tickets));
-            setHasNextPage(result.payload.hasNextPage);
-          } else {
-            setError(result.error);
-          }
-        } catch (error) {
-          setError(error);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-  
-      fetchData();
-    }, [currentPage]);
-  
-    const loadMoreTickets = () => {
-      if (hasNextPage) {
-        setCurrentPage((prevPage) => prevPage + 1);
-      }
-    };
-    
-    const toggleTicketExpansion = (index) => {
-        setTicketsData((prevTicketsData) =>
-          prevTicketsData.map((ticket, i) => {
-            if (i === index) {
-              return {
-                ...ticket,
-                expanded: !ticket.expanded,
-              };
-            }
-            return ticket;
-          })
-        );
-      };
-
-
-    return {
-      ticketsData,
-      isLoading,
-      hasNextPage,
-      error,
-      loadMoreTickets,
-      toggleTicketExpansion
-    };
-  };
+  const {currentUser} = useAuth()
+  const { status, isError, data, fetchNextPage, hasNextPage,isFetching,isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: [currentUser.id],
+      queryFn: fetchTickets,
+      initialPageParam: 1,
+      getNextPageParam: (lastPage, pages, lastPageParam) => {
+        
+        if (pages && lastPage?.hasNextPage) return lastPageParam + 1;
+      },
+    });
+  let tickets = data?.pages[0]?.tickets ? data?.pages?.flatMap((page) => page.tickets) : []
+  return { status, isError, tickets, fetchNextPage, hasNextPage, isFetching,isFetchingNextPage };
+};

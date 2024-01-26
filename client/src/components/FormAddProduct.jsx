@@ -39,7 +39,6 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
     const thumbnailsArray = action === 'POST' 
     ? formData.thumbnails.split(",").map((url) => url.trim())
      :formData.thumbnails
-    console.log(thumbnailsArray)
     const url =  action === 'POST' ? CONSTANTS.PRODUCTS_URL : CONSTANTS.PRODUCTS_URL+`/${product.id}`
     try {
       const result = await fetch( url, {
@@ -90,7 +89,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
               </label>
               <input
               required
-                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-xs rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
+                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
                 id='title'
                 name='title'
                 type='text'
@@ -109,7 +108,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
               </label>
               <input
               required
-                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-xs rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
+                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
                 id='price'
                 name='price'
                 type='number'
@@ -129,7 +128,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
               </label>
               <input
               required
-                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-xs rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
+                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
                 id='code'
                 name='code'
                 type='text'
@@ -148,7 +147,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
               </label>
               <input
               required
-                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-xs rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
+                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
                 id='stock'
                 name='stock'
                 type='number'
@@ -167,7 +166,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
               </label>
               <input
               required
-                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-xs rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
+                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
                 id='category'
                 name='category'
                 type='text'
@@ -185,7 +184,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
                Status
               </label>
               <select
-                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-xs rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
+                className='shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
                 id='status'
                 name='status'
                 value={formData.status}
@@ -204,7 +203,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
               Product description
             </label>
             <textarea
-              className='shadow resize-none appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-xs rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
+              className='shadow resize-none appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
               id='description'
               name='description'
               placeholder='Enter the product description'
@@ -220,7 +219,7 @@ export default function FormAddProduct({action, product, tittle, refreshProducts
               URLs of the images (separated by commas)
             </label>
             <textarea
-              className='shadow resize-none appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-xs rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
+              className='shadow resize-none appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline'
               id='thumbnails'
               name='thumbnails'
               placeholder='Enter the URLs of the images separated by commas'

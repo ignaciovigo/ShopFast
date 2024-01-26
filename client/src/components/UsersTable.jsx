@@ -7,7 +7,7 @@ import CONSTANTS from "../constants/constants";
 export default function UsersTable() {
   const { allUsers, getUsers } = useUsers();
   const [search, setSearch] = useState('')
-
+  
   const handleClick =  (e) => {
     const type = e.target.dataset.btn
     if(type === 'prev') getUsers({ newURL: allUsers.prevLink, search});
@@ -21,10 +21,11 @@ export default function UsersTable() {
 
   }
   return (
-    <div className='w-full overflow-x-auto scrollbar flex flex-col gap-2'>
+    <div className='relative shadow-md sm:rounded-lg w-full flex flex-col gap-2'>
       <InputSearch setSearch={setSearch} search={search} getProductsBySearch={getUsersBySearch} placeholder='Search by email or fullname...'/>
-      <table className='w-full text-sm text-left  text-gray-500 dark:text-gray-400'>
-        <thead className='text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ff-fourth'>
+      <div className="w-full overflow-x-auto scrollbar">
+      <table className='w-full text-sm text-left  text-[--text-400]'>
+        <thead className='ttext-xs uppercase bg-[--bg-200] text-[--text-100] ff-third'>
           <tr className=' sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0'>
             <th scope='col' className='md:px-3 md:py-3'>
               email
@@ -55,14 +56,15 @@ export default function UsersTable() {
           }
         </tbody>
       </table>
-      <div className="flex justify-center items-center gap-3 w-full">
+      </div>
+      <div className="flex justify-center items-center gap-3 h-full w-full mt-auto">
         {
-            <button  className={`${allUsers.prevLink ?'visible' :'invisible' } bg-second hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded active:scale-90 duration-100`} onClick={handleClick} data-btn='prev' ><HiChevronLeft className="pointer-events-none" /> </button> 
+            <button  className={`${allUsers.prevLink ?'visible' :'invisible' } bg-[--bg-200] hover:bg-[--bg-400] text-[--primary-200] hover:text-[--primary-100] font-bold py-2 px-4 rounded active:scale-90 duration-100`} onClick={handleClick} data-btn='prev' ><HiChevronLeft className="pointer-events-none" /> </button> 
         }
         <p className="text-md text-gray-500 cursor-default">{allUsers.page}</p>
         {
           
-            <button  className={`${allUsers.nextLink ?'visible' :'invisible' } bg-second hover:bg-yellow-500 text-black font-bold py-2 px-4 rounded active:scale-90 duration-100`} onClick={handleClick} data-btn='next' ><HiChevronRight className="pointer-events-none" /></button>
+            <button  className={`${allUsers.nextLink ?'visible' :'invisible' } bg-[--bg-200] hover:bg-[--bg-400] text-[--primary-200] hover:text-[--primary-100] font-bold py-2 px-4 rounded active:scale-90 duration-100`} onClick={handleClick} data-btn='next' ><HiChevronRight className="pointer-events-none" /></button>
           
         }
       </div>

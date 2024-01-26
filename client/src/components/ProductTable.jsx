@@ -4,10 +4,7 @@ import FormAddProduct from "./FormAddProduct";
 import { FaPlus } from "react-icons/fa";
 import BtnAddProductsModal from "./BtnAddProductsModal";
 export default function ProductTable({
-  getProducts,
-  setSearch,
   products,
-  isLoading,
   refreshProducts,
 }) {
   
@@ -17,8 +14,8 @@ export default function ProductTable({
       <div className="w-full overflow-x-auto scrollbar">
 
       
-      <table className='w-full text-sm text-left  text-gray-500 dark:text-gray-400'>
-        <thead className='text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ff-fourth'>
+      <table className='w-full text-sm text-left  text-[--text-400] '>
+        <thead className='text-xs uppercase bg-[--bg-200] text-[--text-100] ff-third'>
           <tr className=' sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0'>
             <th scope='col' className='md:px-3 md:py-3'>
               Product title

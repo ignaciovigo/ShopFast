@@ -13,12 +13,10 @@ export default function SideBar() {
     
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
       <Link
-        className="mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 md:h-40"
-        to="/"
+        className="mb-2 flex h-20 items-center md:justify-center rounded-md bg-[--bg-500] p-4 md:h-40 group/logo"
+        to="/products"
       >
-        <div className="w-32 text-white md:w-40">
-          ShopFast
-        </div>
+       <img src="../../public/logoShopFast.png" alt="ShopFast Logo"  className="w-[200px] h-auto group-hover/logo:scale-105 transition-all duration-200"/>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
       <IconContext.Provider value={{ className: "text-[--primary-100] h-[2rem] w-[2rem]" }}>
@@ -28,7 +26,7 @@ export default function SideBar() {
                 <Link
             key={key}
             to={data.path}
-            className={`flex h-[48px] ff-fourth grow items-center border border-[--border] text-[--text-100] justify-center gap-3 rounded-md bg-[--bg-200] p-3 text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] md:flex-none md:justify-start md:p-2 md:px-3
+            className={`flex h-[48px] ff-fourth grow items-center border border-[--border] text-[--text-100] justify-center gap-3 rounded-md bg-[--bg-200] text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] md:flex-none md:justify-start p-0 md:p-2 md:px-3 transition-all duration-200
              ${pathname === data.path ? 'bg-[--bg-400] text-[--text-200]': ''}`}
           >
             <span className="w-6">

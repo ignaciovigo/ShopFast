@@ -57,6 +57,8 @@ export default function Purchase() {
             " Check your email for more details!"
           );
           clearCart();
+          setDeliveryAddress('')
+          setCreditCardNumber('')
         }
         if (resultPurchase.status === "error") {
           toast(
@@ -86,40 +88,44 @@ export default function Purchase() {
   };
   return (
     <div className='max-w-6xl mx-auto py-8 px-4 sm:px-6 lg:px-8'>
-      <div className='bg-white shadow-lg rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2'>
-        <h2 className='text-2xl font-bold mb-4 md:col-span-3 p-2 ff-third ps-4'>Purchase</h2>
+      <div className='bg-[--bg-200] border border-[--border] shadow-lg rounded-lg overflow-hidden grid grid-cols-1 md:grid-cols-2'>
+        <h2 className='text-2xl font-bold mb-4 md:col-span-3 ff-fourth ps-4 text-[--text-100] p-4'>Purchase</h2>
         <CartContainer />
-        <div className='bg-white rounded-lg shadow-md p-6'>
+        <div className='bg-[--bg-200] rounded-lg shadow-md p-6'>
           <section className='w-full flex flex-col justify-center items-center gap-2'>
           <div className="mt-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2">Delivery Address:</label>
+    <label className="block text-[--text-400] text-sm  ">Delivery Address:</label>
     <input
       type="text"
       value={deliveryAddress}
       onChange={(e) => setDeliveryAddress(e.target.value)}
-      className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-gray-500 focus:shadow-outline"
+      className="shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline placeholder:text-sm"
       placeholder="Enter your delivery address"
       
     />
   </div>
   <div className="mt-4">
-    <label className="block text-gray-700 text-sm font-bold mb-2">Credit Card Number:</label>
+    <label className="block text-[--text-400] text-sm  ">Credit Card Number:</label>
     <input
       type="number"
       value={creditCardNumber}
       onChange={(e) => setCreditCardNumber(e.target.value)}
-      className="shadow appearance-none border border-gray-400 rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-gray-500 focus:shadow-outline"
+      className="shadow appearance-none border border-[--border] bg-[--input] text-[--text-100] placeholder:text-md rounded w-full py-2 px-3 leading-tight focus:outline-gray-500 focus:shadow-outline placeholder:text-sm"
       placeholder="Enter your credit card number"
     />
   </div>
-            <h1 className='text-2xl font-bold text-black ff-fourth'>
-              Total Price ${totalPrice()}
+            <h1 className='text-[--text-400] text-2xl flex gap-1 items-center justify-between max-w-xs w-full'>
+              Total Price 
+
+              <span>
+              <span className="text-[--primary-100]">$</span>{totalPrice()}
+              </span>
             </h1>
             <div>
               <button
                 disabled={isLoading}
                 onClick={handleClick}
-                className='bg-second hover:bg-yellow-500 text-black font-bold flex py-2 px-4 rounded active:scale-90 duration-100 ff-third'
+                className='ff-fourth items-center border h-10 flex border-[--border]  hover:ring-1 hover:ring-[--primary-100] text-[--text-100] gap-3 rounded-md bg-[--bg-100] text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] flex-none justify-evenly p-2 px-3 transition-all ease-in 300s'
               >
                 {isLoading ? (
                   <>

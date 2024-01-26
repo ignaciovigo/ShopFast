@@ -42,16 +42,16 @@ export default function UsersTableRow({
     }
   }
   return (
-    <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 ff-second  sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0 '>
+    <tr className='border-b border-[--border] bg-[--bg-200]  hover:bg-gray-600  ff-second  sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0 group/row transition-all duration-100 ease-in'>
       <th
         scope='row'
-        className='md:px-3 md:py-3 px-1 py-1 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+        className='md:px-3 md:py-3 px-1 py-1 font-medium  whitespace-nowrap text-white'
       >
         {email}
       </th>
       <td className='md:py-3 px-1 py-1'>{fullName}</td>
       <td className='md:py-3 px-1 py-1'>
-      <select className="bg-gray-800 text-white border border-gray-600 rounded-md p-1" value={selectedRole} onChange={handleChange}>
+      <select className="bg-[--bg-100] text-white hover:bg-[--bg-500] border border-[--border] rounded-md p-1" value={selectedRole} onChange={handleChange}>
         {
           role === 'USER' 
           ? <>
@@ -72,7 +72,7 @@ export default function UsersTableRow({
       <td className='flex items-center md:py-3 justify-center gap-1'>
         <button
       type="button"
-        className={`font-medium flex justify-center py-1 items-center bg-slate-500/50 hover:bg-slate-800 transition-colors duration-100 ease-in rounded-md px-1 text-green-500 ${!showSaveBtn && 'invisible' }`}
+        className={`font-medium py-1 bg-[--bg-100] text-green-700 flex items-center justify-center hover:bg-[--bg-500] group-hover/row:text-green-500 transition-colors duration-100 ease-in rounded-md px-1 ${!showSaveBtn && 'invisible' }`}
         data-btn='save'
         onClick={handleSave}
       >
@@ -82,7 +82,7 @@ export default function UsersTableRow({
         <button
           type='button'
           onClick={handleRemove}
-          className='font-medium text-red-600 py-1 dark:text-red-500 flex items-center justify-center hover:bg-slate-800 transition-colors duration-100 ease-in rounded-md px-1'
+          className='font-medium py-1 bg-[--bg-100] text-[--primary-200] flex items-center justify-center hover:bg-[--bg-500] group-hover/row:text-[--primary-100] transition-colors duration-100 ease-in rounded-md px-1'
         >
           <FaTrash className='pointer-events-none' />
           Remove

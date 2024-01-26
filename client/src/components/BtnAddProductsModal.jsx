@@ -10,7 +10,7 @@ export default function BtnAddProductsModal({refreshProducts}) {
     return (
         <>
         <button
-          className='ff-fourth items-center border h-10 flex border-[--border]  hover:ring-2 hover:ring-[--primary-100] text-[--text-100] gap-3 rounded-md bg-[--bg-200] text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] flex-none justify-start p-2 px-3 transition-all ease-in 300s'
+          className='ff-fourth items-center max-w-[140px] border h-10 flex border-[--border]  hover:ring-2 hover:ring-[--primary-100] text-[--text-100] gap-3 rounded-md bg-[--bg-200] text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] flex-none justify-start p-2 px-3 transition-all ease-in 300s'
           type='button'
           onClick={handleClick}
           >

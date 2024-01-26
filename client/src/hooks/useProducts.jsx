@@ -11,7 +11,7 @@ export default function useProducts({search}) {
   const prevSearch = useRef(search)  
 
   const getProducts = useCallback(async ({search, link}) => {
-    if(prevSearch.current === search && prevSearch.current != '') return
+    if(prevSearch.current === search && prevSearch.current != '' && !link) return
     try {
       setIsLoading(true);
       prevSearch.current = search

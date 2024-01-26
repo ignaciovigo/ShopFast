@@ -116,22 +116,6 @@ body > div {
   flex-direction: column;
 }
 
-.bg-rain {
-  background-image: url("assets/dddepth-345.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  width: 100vw;
-}
-
-.bg-thing {
-  background-image: url("assets/dddepth-228.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .modal {
   position: absolute;
   z-index: 20;

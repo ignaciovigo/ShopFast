@@ -3,7 +3,6 @@ import { useAuth } from "../hooks/useAuth"
 
 export default function ProtectedRoute({ children }) {
     const {isAuthenticated, isLoading, currentUser } = useAuth()
-    console.log(isAuthenticated,'isauth?', currentUser);
     if(isLoading){
       return <h1 className="flex text-center justify-center text-2xl">Loading</h1>
     }

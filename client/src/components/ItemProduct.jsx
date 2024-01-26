@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import useCart from "../hooks/useCart";
-import { HiTrash, HiX } from "react-icons/hi";
-import CONSTANTS from "../constants/constants";
-import { toast } from "react-hot-toast";
-import { motion, AnimatePresence } from "framer-motion";
+import { HiX } from "react-icons/hi";
 import Carousel from "./Carousel";
+
 export default function ItemProduct({ product, role }) {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -94,11 +92,10 @@ export default function ItemProduct({ product, role }) {
         </button>
       </div>
       <button
-        className='ff-fourth items-center border h-10 flex border-[--border]  hover:ring-1 hover:ring-[--primary-100] text-[--text-100] gap-3 rounded-md bg-[--bg-100] text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] flex-none justify-evenly p-2 px-3 transition-all ease-in 300s'
+        className='ff-fourth items-center border h-10 flex border-[--border]  hover:ring-1 hover:ring-[--primary-100] text-[--text-100] gap-3 rounded-md bg-[--bg-100] text-md font-medium hover:bg-[--bg-500] hover:text-[--text-300] flex-none justify-evenly p-2 px-3 transition-all ease-in duration-200 text-sm'
         onClick={handleAddToCart}
       >
         <p className='text-xl ff-fourth font-bold self-center text-[--text-100]'>
-          {" "}
           <span className='align-middle text-sm text-[--primary-100]'>$</span>
           {price}
         </p>

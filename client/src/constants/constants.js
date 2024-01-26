@@ -1,4 +1,4 @@
-const URL ='http://localhost:8080'
+const URL ='https://shopfastback-dev-qbdn.4.us-1.fl0.io'
 const CONSTANTS = {
     LOGIN_URL : `${URL}/api/jwt/login`,
     REGISTER_URL: `${URL}/api/users/register`,
@@ -8,7 +8,9 @@ const CONSTANTS = {
     CART_URL:`${URL}/api/carts`,
     USER_TICKETS_URL:`${URL}/api/users/tickets`,
     ALL_USERS_URL: `${URL}/api/users`,
-    GITHUB_LOGIN_URL:`${URL}/api/jwt/github`
+    GITHUB_LOGIN_URL:`${URL}/api/jwt/github`,
+    GUEST_EMAIL:'guest@example.com',
+    GUEST_PASS:'123456'
 }
 
 export default CONSTANTS
