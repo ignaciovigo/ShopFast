@@ -5,3 +5,4 @@
 /proyecto
 /client-shopfast
 /**/**/node_modules
+.env
